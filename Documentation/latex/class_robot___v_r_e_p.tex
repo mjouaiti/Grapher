@@ -1,0 +1,382 @@
+\hypertarget{class_robot___v_r_e_p}{}\section{Robot\+\_\+\+V\+R\+EP Class Reference}
+\label{class_robot___v_r_e_p}\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_robot___v_r_e_p_a9dc0b2a836ff671fbf6fdbe41d79aaa9}{Robot\+\_\+\+V\+R\+EP} ()
+\item 
+\hyperlink{class_robot___v_r_e_p_a6033bb809e8bff4443c8382cdc5d6702}{Robot\+\_\+\+V\+R\+EP} (const int client\+Id, std\+::vector$<$ std\+::string $>$ joint\+Names)
+\item 
+\hyperlink{class_robot___v_r_e_p_a19216cb4b4aff3541330dd935444cb4b}{$\sim$\+Robot\+\_\+\+V\+R\+EP} ()
+\item 
+double \hyperlink{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{get\+Angular\+Position} (const unsigned int joint\+ID)
+\item 
+double \hyperlink{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{get\+Angular\+Velocity} (const unsigned int joint\+ID)
+\item 
+double \hyperlink{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{get\+Angular\+Force} (const unsigned int joint\+ID)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{set\+Position} (const unsigned int joint\+ID, const double pos)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{set\+Velocity} (const unsigned int joint\+ID, const double speed)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{set\+Force} (const unsigned int joint\+ID, const double force)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{update\+Angular\+Position} (const unsigned int index=-\/1)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{update\+Angular\+Velocity} (const unsigned int index=-\/1)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{update\+Angular\+Force} (const unsigned int index=-\/1)
+\item 
+bool \hyperlink{class_robot___v_r_e_p_a3dbd26e95f1a7b9ef06065b1a00acd9f}{lock\+Joint} (const int joint\+Handle)
+\item 
+void \hyperlink{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}{start\+Clock} ()
+\item 
+void \hyperlink{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}{update\+Clock} ()
+\item 
+double \hyperlink{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}{get\+Microseconds} ()
+\item 
+double \hyperlink{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}{get\+Seconds} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{Robot\+\_\+\+V\+R\+E\+P()}{Robot\_VREP()}}]{\setlength{\rightskip}{0pt plus 5cm}Robot\+\_\+\+V\+R\+E\+P\+::\+Robot\+\_\+\+V\+R\+EP (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a9dc0b2a836ff671fbf6fdbe41d79aaa9}{}\label{class_robot___v_r_e_p_a9dc0b2a836ff671fbf6fdbe41d79aaa9}
+\hyperlink{class_robot___v_r_e_p}{Robot\+\_\+\+V\+R\+EP} Constructor \begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a6033bb809e8bff4443c8382cdc5d6702}{Robot\+\_\+\+V\+R\+E\+P(const int client\+Id, std\+::vector$<$std\+::string$>$ joint\+Names)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{Robot\+\_\+\+V\+R\+E\+P(const int client\+Id, std\+::vector$<$ std\+::string $>$ joint\+Names)}{Robot\_VREP(const int clientId, std::vector< std::string > jointNames)}}]{\setlength{\rightskip}{0pt plus 5cm}Robot\+\_\+\+V\+R\+E\+P\+::\+Robot\+\_\+\+V\+R\+EP (
+\begin{DoxyParamCaption}
+\item[{const int}]{client\+Id, }
+\item[{std\+::vector$<$ std\+::string $>$}]{joint\+Names}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a6033bb809e8bff4443c8382cdc5d6702}{}\label{class_robot___v_r_e_p_a6033bb809e8bff4443c8382cdc5d6702}
+\hyperlink{class_robot___v_r_e_p}{Robot\+\_\+\+V\+R\+EP} Constructor 
+\begin{DoxyParams}{Parameters}
+{\em client\+Id} & Id of the V\+R\+EP client \\
+\hline
+{\em joint\+Names} & list of the joint names of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a9dc0b2a836ff671fbf6fdbe41d79aaa9}{Robot\+\_\+\+V\+R\+E\+P()} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!````~Robot\+\_\+\+V\+R\+EP@{$\sim$\+Robot\+\_\+\+V\+R\+EP}}
+\index{````~Robot\+\_\+\+V\+R\+EP@{$\sim$\+Robot\+\_\+\+V\+R\+EP}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{$\sim$\+Robot\+\_\+\+V\+R\+E\+P()}{~Robot\_VREP()}}]{\setlength{\rightskip}{0pt plus 5cm}Robot\+\_\+\+V\+R\+E\+P\+::$\sim$\+Robot\+\_\+\+V\+R\+EP (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a19216cb4b4aff3541330dd935444cb4b}{}\label{class_robot___v_r_e_p_a19216cb4b4aff3541330dd935444cb4b}
+\hyperlink{class_robot___v_r_e_p}{Robot\+\_\+\+V\+R\+EP} Destructor 
+
+\subsection{Member Function Documentation}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!get\+Angular\+Force@{get\+Angular\+Force}}
+\index{get\+Angular\+Force@{get\+Angular\+Force}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{get\+Angular\+Force(const unsigned int joint\+I\+D)}{getAngularForce(const unsigned int jointID)}}]{\setlength{\rightskip}{0pt plus 5cm}double Robot\+\_\+\+V\+R\+E\+P\+::get\+Angular\+Force (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{}\label{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}
+Gets the angular force of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to get the force of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angular force of the joint in radians (double) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{update\+Angular\+Force(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{set\+Force(const unsigned int joint\+I\+D, const double force)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{get\+Angular\+Position(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{get\+Angular\+Velocity(const unsigned int joint\+I\+D)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!get\+Angular\+Position@{get\+Angular\+Position}}
+\index{get\+Angular\+Position@{get\+Angular\+Position}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{get\+Angular\+Position(const unsigned int joint\+I\+D)}{getAngularPosition(const unsigned int jointID)}}]{\setlength{\rightskip}{0pt plus 5cm}double Robot\+\_\+\+V\+R\+E\+P\+::get\+Angular\+Position (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{}\label{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}
+Gets the angular position of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to get the position of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angular position of the joint in radians (double) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{update\+Angular\+Position(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{set\+Position(const unsigned int joint\+I\+D, const double pos)} 
+
+\hyperlink{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{get\+Angular\+Velocity(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{get\+Angular\+Force(const unsigned int joint\+I\+D)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!get\+Angular\+Velocity@{get\+Angular\+Velocity}}
+\index{get\+Angular\+Velocity@{get\+Angular\+Velocity}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{get\+Angular\+Velocity(const unsigned int joint\+I\+D)}{getAngularVelocity(const unsigned int jointID)}}]{\setlength{\rightskip}{0pt plus 5cm}double Robot\+\_\+\+V\+R\+E\+P\+::get\+Angular\+Velocity (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{}\label{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}
+Gets the angular velocity of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to get the velocity of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the angular velocity of the joint in radians (double) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{update\+Angular\+Velocity(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{set\+Velocity(const unsigned int joint\+I\+D, const double vel)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{get\+Angular\+Position(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{get\+Angular\+Force(const unsigned int joint\+I\+D)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!get\+Microseconds@{get\+Microseconds}}
+\index{get\+Microseconds@{get\+Microseconds}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{get\+Microseconds()}{getMicroseconds()}}]{\setlength{\rightskip}{0pt plus 5cm}double Robot\+\_\+\+V\+R\+E\+P\+::get\+Microseconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}{}\label{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}
+Updates the clock \begin{DoxyReturn}{Returns}
+elapsed time in microseconds (double) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}{start\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}{update\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}{get\+Seconds()} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!get\+Seconds@{get\+Seconds}}
+\index{get\+Seconds@{get\+Seconds}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{get\+Seconds()}{getSeconds()}}]{\setlength{\rightskip}{0pt plus 5cm}double Robot\+\_\+\+V\+R\+E\+P\+::get\+Seconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}{}\label{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}
+Updates the clock \begin{DoxyReturn}{Returns}
+elapsed time in seconds (double) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}{start\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}{update\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}{get\+Microseconds()} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!lock\+Joint@{lock\+Joint}}
+\index{lock\+Joint@{lock\+Joint}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{lock\+Joint(const int joint\+Handle)}{lockJoint(const int jointHandle)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::lock\+Joint (
+\begin{DoxyParamCaption}
+\item[{const int}]{joint\+Handle}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a3dbd26e95f1a7b9ef06065b1a00acd9f}{}\label{class_robot___v_r_e_p_a3dbd26e95f1a7b9ef06065b1a00acd9f}
+Is supposed to lock the joint so that it can\textquotesingle{}t move (doesn\textquotesingle{}t seem to be working...) 
+\begin{DoxyParams}{Parameters}
+{\em joint\+Handle} & handle of the joint to lock \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!set\+Force@{set\+Force}}
+\index{set\+Force@{set\+Force}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{set\+Force(const unsigned int joint\+I\+D, const double force)}{setForce(const unsigned int jointID, const double force)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::set\+Force (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID, }
+\item[{const double}]{force}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{}\label{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}
+Sets the angular force of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to set the force of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{update\+Angular\+Force(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{get\+Angular\+Force(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{set\+Position(const unsigned int joint\+I\+D, const double pos)} 
+
+\hyperlink{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{set\+Velocity(const unsigned int joint\+I\+D, const double speed)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!set\+Position@{set\+Position}}
+\index{set\+Position@{set\+Position}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{set\+Position(const unsigned int joint\+I\+D, const double pos)}{setPosition(const unsigned int jointID, const double pos)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::set\+Position (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID, }
+\item[{const double}]{pos}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{}\label{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}
+Sets the angular position of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to set the position of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{update\+Angular\+Position(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{get\+Angular\+Position(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{set\+Velocity(const unsigned int joint\+I\+D, const double speed)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{set\+Force(const unsigned int joint\+I\+D, const double force)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!set\+Velocity@{set\+Velocity}}
+\index{set\+Velocity@{set\+Velocity}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{set\+Velocity(const unsigned int joint\+I\+D, const double speed)}{setVelocity(const unsigned int jointID, const double speed)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::set\+Velocity (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{joint\+ID, }
+\item[{const double}]{speed}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{}\label{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}
+Sets the angular velocity of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em joint\+ID} & id of the joint we want to set the velocity of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{update\+Angular\+Velocity(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{get\+Angular\+Velocity(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{set\+Position(const unsigned int joint\+I\+D, const double pos)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{set\+Force(const unsigned int joint\+I\+D, const double force)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!start\+Clock@{start\+Clock}}
+\index{start\+Clock@{start\+Clock}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{start\+Clock()}{startClock()}}]{\setlength{\rightskip}{0pt plus 5cm}void Robot\+\_\+\+V\+R\+E\+P\+::start\+Clock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}{}\label{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}
+Starts the clock \begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}{update\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}{get\+Microseconds()} 
+
+\hyperlink{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}{get\+Seconds()} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!update\+Angular\+Force@{update\+Angular\+Force}}
+\index{update\+Angular\+Force@{update\+Angular\+Force}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{update\+Angular\+Force(const unsigned int index=-\/1)}{updateAngularForce(const unsigned int index=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::update\+Angular\+Force (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{}\label{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}
+Updates the angular force of a given joint (Be careful not to call this function more than necessary since it\textquotesingle{}s terribly slow) 
+\begin{DoxyParams}{Parameters}
+{\em index} & (optional) id of the joint we want to update. If not set, will update every joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{update\+Angular\+Position(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{update\+Angular\+Velocity(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ac7d1ea82dac84b23eba4401b5ef8c9d0}{get\+Angular\+Force(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3f957c19e296f4380d3fcd4dfac1d1b}{set\+Force(const unsigned int joint\+I\+D, const double force)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!update\+Angular\+Position@{update\+Angular\+Position}}
+\index{update\+Angular\+Position@{update\+Angular\+Position}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{update\+Angular\+Position(const unsigned int index=-\/1)}{updateAngularPosition(const unsigned int index=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::update\+Angular\+Position (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{}\label{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}
+Updates the angular position of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em index} & (optional) id of the joint we want to update. If not set, will update every joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{update\+Angular\+Velocity(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{update\+Angular\+Force(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ad3b09d08a37807eccd49f99e46113ff3}{get\+Angular\+Position(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_aff762585c7876bd112f8897d9351f76b}{set\+Position(const unsigned int joint\+I\+D, const double pos)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!update\+Angular\+Velocity@{update\+Angular\+Velocity}}
+\index{update\+Angular\+Velocity@{update\+Angular\+Velocity}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{update\+Angular\+Velocity(const unsigned int index=-\/1)}{updateAngularVelocity(const unsigned int index=-1)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Robot\+\_\+\+V\+R\+E\+P\+::update\+Angular\+Velocity (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}{}\label{class_robot___v_r_e_p_a066997889ab5b2ef9ffddd93a8bf9531}
+Updates the angular velocity of a given joint 
+\begin{DoxyParams}{Parameters}
+{\em index} & (optional) id of the joint we want to update. If not set, will update every joint \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the operation succeeded, false otherwise (bool) 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ad916176d052133d8f87688ca308d94f9}{update\+Angular\+Position(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_ab67bc62a8a02e2bbfbd69c0be383fc89}{update\+Angular\+Force(const unsigned int index)} 
+
+\hyperlink{class_robot___v_r_e_p_aa838e8dce05053eacf4e4c4e20f06c31}{get\+Angular\+Velocity(const unsigned int joint\+I\+D)} 
+
+\hyperlink{class_robot___v_r_e_p_a25ccf81b13b4ef684f03731adacf0966}{set\+Velocity(const unsigned int joint\+I\+D, const double speed)} 
+\end{DoxySeeAlso}
+\index{Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}!update\+Clock@{update\+Clock}}
+\index{update\+Clock@{update\+Clock}!Robot\+\_\+\+V\+R\+EP@{Robot\+\_\+\+V\+R\+EP}}
+\subsubsection[{\texorpdfstring{update\+Clock()}{updateClock()}}]{\setlength{\rightskip}{0pt plus 5cm}void Robot\+\_\+\+V\+R\+E\+P\+::update\+Clock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}{}\label{class_robot___v_r_e_p_a2e2cb43ed09c90d80a30b6bd8dccb8dd}
+Updates the clock \begin{DoxySeeAlso}{See also}
+\hyperlink{class_robot___v_r_e_p_ae73535aed287547a53087f427f3f2c5d}{start\+Clock()} 
+
+\hyperlink{class_robot___v_r_e_p_ac3c4a77aecb6dee639886bba24403699}{get\+Microseconds()} 
+
+\hyperlink{class_robot___v_r_e_p_a5d44e949cf48ead1d377355c5902cea1}{get\+Seconds()} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Robot\+\_\+\+V\+R\+E\+P.\+h\item 
+Robot\+\_\+\+V\+R\+E\+P.\+cpp\end{DoxyCompactItemize}
