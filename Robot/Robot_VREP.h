@@ -51,7 +51,6 @@ class Robot_VREP: public Robot
     virtual bool updateAngularVelocity(const std::string jointName = "");
     virtual bool updateAngularForce(const std::string jointName = "");
     
-    bool lockJoint(const int jointHandle);
     bool closeGripper(const int* motorHandles);
     bool openGripper(const int* motorHandles);
     

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		610E28771FA22B2E00BBF8DA /* Reach.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 610E28751FA22B0F00BBF8DA /* Reach.cpp */; };
 		615EF9761F7CD13700FD584C /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
 		615EF9771F7CD14700FD584C /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
 		615EF9791F7E053B00FD584C /* Integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9781F7E053B00FD584C /* Integrator.cpp */; };
@@ -115,7 +114,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		610E28751FA22B0F00BBF8DA /* Reach.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Reach.cpp; path = Simulation/Reach.cpp; sourceTree = "<group>"; };
 		615EF96E1F7CCEB000FD584C /* FrequencePropre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FrequencePropre; sourceTree = BUILT_PRODUCTS_DIR; };
 		615EF9781F7E053B00FD584C /* Integrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Integrator.cpp; path = "lib-cpg/Integrator.cpp"; sourceTree = "<group>"; };
 		615EF97E1F7E086A00FD584C /* Graphical */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphical; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +149,6 @@
 		61AC6C961F7649EE00B25F12 /* extApiPlatform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApiPlatform.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApiPlatform.c"; sourceTree = "<absolute>"; };
 		61AC6CB91F77ECFC00B25F12 /* Handshaking2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Handshaking2; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC6CD41F7A2F3200B25F12 /* Handshaking2b */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Handshaking2b; sourceTree = BUILT_PRODUCTS_DIR; };
-		61BBDE8C1FE28DE100B7244B /* Reach.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reach.h; path = Simulation/Reach.h; sourceTree = "<group>"; };
 		61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_imgproc.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_highgui.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE981FE926D700B7244B /* libqi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqi.dylib; path = "../../../../naoqi-sdk-2.1.4.13-mac64/lib/libqi.dylib"; sourceTree = "<group>"; };
@@ -388,8 +385,6 @@
 				617EEFE21FB4C15D00676D6E /* Robot_VREP.h */,
 				6191E4BA1F8A50BF00E53FFE /* PIDController.h */,
 				6191E4B91F8A50BF00E53FFE /* PIDController.cpp */,
-				61BBDE8C1FE28DE100B7244B /* Reach.h */,
-				610E28751FA22B0F00BBF8DA /* Reach.cpp */,
 				617EEFE61FB4C5D200676D6E /* Simulation.h */,
 				617EEFE71FB4C5D300676D6E /* Simulation.cpp */,
 				617EEFE51FB4C5BB00676D6E /* Simulation2.h */,
@@ -753,7 +748,6 @@
 			files = (
 				617EEFE41FB4C15D00676D6E /* Robot_VREP.cpp in Sources */,
 				617EEFF61FB5A81900676D6E /* Integrator.cpp in Sources */,
-				610E28771FA22B2E00BBF8DA /* Reach.cpp in Sources */,
 				615EF99C1F7E633400FD584C /* main.cpp in Sources */,
 				617EEFE11FB4C13300676D6E /* Robot.cpp in Sources */,
 				617EEFE81FB4C5D300676D6E /* Simulation.cpp in Sources */,

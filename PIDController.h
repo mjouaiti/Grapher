@@ -22,7 +22,7 @@ public:
 private:
     double m_kp, m_ki, m_kd;                            /**< P, I , D values */
     double m_dt;                                        /**< timestep */
-    bool m_init;                                 /**< indicates whether the controller has already been initialised */
+    bool m_init;                                        /**< indicates whether the controller has already been initialised */
     double m_pidCumulativeErrorForIntegralParam;        /**< sum of the error values */
     double m_pidLastErrorForDerivativeParam;            /**< last error value */
     double m_targetPos;                                 /**< target position */

@@ -9,7 +9,7 @@
 #include "Grapher.h"
 #include "../Simulation/Simulation2.h"
 
-#define TMAX 110
+#define TMAX 50
 #define OVERVIEW
 
 /**
@@ -23,7 +23,7 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_record(), m_values(),
 
 /**
  * Grapher Constructor
- * @param nbVariables number of variables that will be recorded
+ * @param nbVariables number of variables that will be recorded (unsigned int)
  * @see Grapher()
  */
 Grapher::Grapher(const unsigned int nbVariables): m_t(0), m_dt(0.01),
@@ -33,6 +33,7 @@ Grapher::Grapher(const unsigned int nbVariables): m_t(0), m_dt(0.01),
     m_VAO = std::vector<GLuint>(m_nbVariables, -1);
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
     m_values.resize(m_nbVariables);
+    m_maxValues = std::vector<double>(m_nbVariables, 0.01);
     bindBuffers();
 }
 
@@ -81,7 +82,7 @@ void Grapher::updateBuffers()
 
 /**
  * Updates the Buffers with the new Values
- * @param data the new data sent by the simulation to be added
+ * @param data the new data sent by the simulation to be added (std::vector<double>)
  * @see updateBuffers()
  */
 void Grapher::update(std::vector<double> data)
@@ -93,15 +94,24 @@ void Grapher::update(std::vector<double> data)
         m_VAO = std::vector<GLuint>(m_nbVariables, -1);
         m_VBO = std::vector<GLuint>(m_nbVariables, -1);
         m_values.resize(m_nbVariables);
+        m_maxValues = std::vector<double>(m_nbVariables, 0.01);
         bindBuffers();
     }
+    std::vector<double> scale(m_nbVariables);
+    std::vector<unsigned int> indices;
     for(unsigned int i = 1; i < m_nbVariables; i++)
     {
-        
+        if(std::abs(data[i]) > m_maxValues[i])
+        {
+            scale[i] = std::abs(data[i]);
+            indices.push_back(i);
+        }
+        else
+            scale[i] = m_maxValues[i];
 #ifdef OVERVIEW
-        m_values[i].push_back(glm::vec2(2.0 * data[0] / TMAX - 1.0, data[i] * scale[i]));
+        m_values[i].push_back(glm::vec2(2.0 * data[0] / TMAX - 1.0, data[i] / m_maxValues[i]));
 #else
-        m_values[i].push_back(glm::vec2(data[0]-1, data[i] * scale[i]));
+        m_values[i].push_back(glm::vec2(data[0]-1, data[i] / m_maxValues[i]));
         if(m_t > 1.51)
             m_values[i].back().x -= (m_t - 1.5 - m_dt);
 #endif
@@ -114,7 +124,7 @@ void Grapher::update(std::vector<double> data)
 #ifndef OVERVIEW
     if(m_t > 1.5)
     {
-        for (unsigned int i = 1; i < m_nbVariables; i++)
+        for(unsigned int i = 1; i < m_nbVariables; i++)
         {
             // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
             if(m_values[i].size() > 400)
@@ -125,13 +135,19 @@ void Grapher::update(std::vector<double> data)
         }
     }
 #endif
+    for(unsigned int i: indices)
+    {
+        for(unsigned int j = 0; j < m_values[i].size(); j++)
+            m_values[i][j].y *= m_maxValues[i] / scale[i];
+    }
+    m_maxValues = scale;
     m_t += m_dt;
     updateBuffers();
 }
 
 /**
  * Render to the first Viewport
- * @param shader Shader to be used
+ * @param shader Shader to be used (Shader)
  * @see render1(const Shader& shader)
  * @see render2(const Shader& shader)
  * @see render3(const Shader& shader)
@@ -141,7 +157,7 @@ void Grapher::render0(const Shader& shader) const
     if(m_nbVariables < 1)
         return;
     shader.use();
-    // Sets the curve color (0 is for blue)
+    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
     glBindVertexArray(m_VAO[_sigma_s2E]);
     // This function is broken on Mac so don't even bother playing with it. Works with Linux though
@@ -161,7 +177,6 @@ void Grapher::render0(const Shader& shader) const
     
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 3);
     glBindVertexArray(m_VAO[_sigma_s3F]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
     glPointSize(5);
     glDrawArrays(GL_LINES, 0, m_values[_sigma_s3F].size());
     glBindVertexArray(0);
@@ -169,7 +184,7 @@ void Grapher::render0(const Shader& shader) const
 
 /**
  * Render to the second Viewport
- * @param shader Shader to be used
+ * @param shader Shader to be used (Shader)
  * @see render0(const Shader& shader)
  * @see render2(const Shader& shader)
  * @see render3(const Shader& shader)
@@ -179,35 +194,34 @@ void Grapher::render1(const Shader& shader) const
     if(m_nbVariables < 1)
         return;
     shader.use();
-    // Sets the curve color (0 is for blue)
+    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
-    glBindVertexArray(m_VAO[_Eps_2E]);
+    glBindVertexArray(m_VAO[_Af_2E]);
     // This function is broken on Mac so don't even bother playing with it. Works with Linux though
     glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Eps_2E].size());
+    glDrawArrays(GL_LINES, 0, m_values[_Af_2E].size());
 
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 1);
-    glBindVertexArray(m_VAO[_Eps_2F]);
+    glBindVertexArray(m_VAO[_Af_2F]);
     glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Eps_2F].size());
+    glDrawArrays(GL_LINES, 0, m_values[_Af_2F].size());
 
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 2);
-    glBindVertexArray(m_VAO[_Eps_3E]);
+    glBindVertexArray(m_VAO[_Af_3E]);
     glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Eps_3E].size());
+    glDrawArrays(GL_LINES, 0, m_values[_Af_3E].size());
     glBindVertexArray(0);
 
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 3);
-    glBindVertexArray(m_VAO[_Eps_3F]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
+    glBindVertexArray(m_VAO[_Af_3F]);
     glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Eps_3F].size());
+    glDrawArrays(GL_LINES, 0, m_values[_Af_3F].size());
     glBindVertexArray(0);
 }
 
 /**
  * Render to the third Viewport
- * @param shader Shader to be used
+ * @param shader Shader to be used (Shader)
  * @see render0(const Shader& shader)
  * @see render1(const Shader& shader)
  * @see render3(const Shader& shader)
@@ -218,7 +232,7 @@ void Grapher::render2(const Shader& shader) const
         return;
     shader.use();
     
-    // Sets the curve color (0 is for blue, 1 is for red)
+    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
     glBindVertexArray(m_VAO[_s2]);
     glPointSize(5);
@@ -235,7 +249,7 @@ void Grapher::render2(const Shader& shader) const
 
 /**
  * Render to the fourth Viewport
- * @param shader Shader to be used
+ * @param shader Shader to be used (Shader)
  * @see render0(const Shader& shader)
  * @see render1(const Shader& shader)
  * @see render2(const Shader& shader)
@@ -246,7 +260,7 @@ void Grapher::render3(const Shader& shader) const
         return;
     shader.use();
     
-    // Sets the curve color (0 is for blue, 1 is for red)
+    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
     glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
     glBindVertexArray(m_VAO[_s3]);
     glPointSize(5);

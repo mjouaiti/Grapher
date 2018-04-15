@@ -26,15 +26,12 @@ enum values {
     _Af_3E, _Af_3F, _Eps_3E, _Eps_3F, _phi_3E, _phi_3F,
     _pf3E, _pf3F, _sn3, _mn3E, _mn3F, _s3
 };
-// scale is designed to allow us to see the whole graph since most values are outside the range [-1, 1]. The values were determined by plotting the curves in an extern graph editor. They may not be suited to other parameters.
-extern float scale[NB_VARIABLES];
 
 class Simulation2: public Simulation
 {
 public:
     Simulation2();
     Simulation2(std::vector<std::string> jointNames);
-    Simulation2(const Simulation& simulation);
     ~Simulation2();
     
     virtual void init();

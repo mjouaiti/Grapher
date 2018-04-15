@@ -36,16 +36,8 @@ public:
     virtual std::vector<double> step() = 0;
     virtual void saveToFile(const std::string& path) = 0;
     
-    double getTime() const;
-    double getTimeStep() const;
-    Robot* getRobot() const;
-    int getSphereHandle() const;
-    int getClientId() const;
-    std::vector<double> getRecord() const;
-    std::map<std::string, CPG*> getCPGs() const;
-    
 protected:
-    Robot* m_robot;                         /**< robot */
+    Robot* m_robot;                             /**< robot */
     float m_initPos[3];                         /**< initial pose of the sphere */
 #ifdef VREP
     int m_sphereHandle;                         /**< VREP handle of the sphere */

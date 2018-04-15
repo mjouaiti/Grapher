@@ -22,7 +22,7 @@ Simulation::Simulation(): m_robot(), m_t(0),
 
 /**
  * Simulation Constructor
- * @param jointNames joint names of the robot
+ * @param jointNames joint names of the robot (std::vector<std::string>)
  * @see Simulation()
  */
 Simulation::Simulation(std::vector<std::string> jointNames): m_robot(), m_t(0),
@@ -30,12 +30,6 @@ Simulation::Simulation(std::vector<std::string> jointNames): m_robot(), m_t(0),
                                                             m_startForce()
 {
     start();
-#ifdef VREP
-    
-#else
-    std::vector<double> newPID {PID_P, PID_I, PID_D};
-    //m_robot->setPID(3, newPID);
-#endif
 }
 
 /**
@@ -107,69 +101,3 @@ void Simulation::run()
         step();
     }
 }
-
-/**
- * getter for the current simulation time
- * @return current simulation time (double)
- */
-double Simulation::getTime() const
-{
-    return  m_t;
-}
-
-/**
- * getter for the simulation timestep
- * @return the timestep (double)
- */
-double Simulation::getTimeStep() const
-{
-    return  m_dt;
-}
-
-/**
- * getter for the VREP Robot
- * @return the VREP Robot (Robot_VREP)
- */
-Robot* Simulation::getRobot() const
-{
-    return m_robot;
-}
-
-/**
- * getter for the sphere handle
- * @return the sphere handle (int)
- */
-int Simulation::getSphereHandle() const
-{
-#ifdef VREP
-    return m_sphereHandle;
-#else
-    return -1;
-#endif
-}
-
-/**
- * getter for the VREP client ID
- * @return the VREP client ID (int)
- */
-#ifdef VREP
-int Simulation::getClientId() const
-{
-    return m_clientID;
-}
-#endif
-
-/**
- * getter for the recorded values
- * @return the recorded values (std::vector<double>)
- */
-std::vector<double> Simulation::getRecord() const
-{
-    return m_record;
-}
-
-std::map<std::string, CPG*> Simulation::getCPGs() const
-{
-    return m_CPGs;
-}
-

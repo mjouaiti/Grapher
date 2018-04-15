@@ -11,6 +11,10 @@
 
 double* input;
 
+/**
+ * CPG constructor
+ * @see CPG(const double* params, std::vector<double> var)
+ */
 CPG::CPG(): m_tauM(0.35), m_tauS(3.5),
             m_lambda(0.002),
             m_sigmaF(1.0), m_mu(0.0005),
@@ -21,33 +25,31 @@ CPG::CPG(): m_tauM(0.35), m_tauS(3.5),
     init();
 }
 
-CPG::CPG(const double tauM, const double tauS,
-         const double sigmaF,
-         const double epsilon, const double lambda,
-         const double Af, const double mu): m_tauM(tauM), m_tauS(tauS),
-                                            m_lambda(lambda),
-                                            m_sigmaF(sigmaF), m_mu(mu),
-                                            m_W(0.005), m_variables(), m_runge()
-{
-    m_variables = { 0.0, -0.216, 10.0, 0.0, -0.216, 10.0, Af, Af, epsilon, epsilon};
-    m_phi = {0.0, 0.0};
-    init();
-}
-
+/**
+ * CPG constructor
+ * @see CPG()
+ */
 CPG::CPG(const double* params, std::vector<double> var): m_tauM(params[0]), m_tauS(params[1]),
                                                         m_lambda(params[3]), m_sigmaF(params[2]),
-                                                        m_mu(params[4]), m_W(0),
+                                                        m_mu(params[4]), m_W(0.005),
                                                         m_variables(var), m_runge()
 {
     init();
     m_phi = {0.0, 0.0};
 }
 
+/**
+ * CPG destructor
+ */
 CPG::~CPG()
 {
     
 }
 
+/**
+ * CPG initialisation function
+ * @see finalize()
+ */
 void CPG::init()
 {
     input = new double[1];
@@ -55,8 +57,8 @@ void CPG::init()
     m_functions = std::vector<std::function<double (double, std::vector<double>)> >(0, NULL);
     
     std::vector<std::function<double (double)> > inputs {
-        [this](double t)->double { return input[0]; }, //RGE input
-        [this](double t)->double { return -input[0]; }//RGF input
+        [this](double t)->double { return -input[0]; }, //RGE input
+        [this](double t)->double { return input[0]; }//RGF input
     };
     m_functions.push_back([inputs, this](double t, std::vector<double> args)->double {
         return _VEQ(args[y_E], args[y_F], inputs[0], args[eps_E], m_W);
@@ -89,6 +91,12 @@ void CPG::init()
         return _EPSEQ(inputs[1], args[eps_F], m_lambda);
     });
 }
+
+/**
+ * CPG coupling function
+ * @param cpg1 first CPG
+ * @param cpg2 secong CPG
+ */
 void coupleCPG(CPG* cpg1, CPG* cpg2)
 {
     std::vector<std::function<double (double, std::vector<double>)> > functions(0, NULL);
@@ -116,41 +124,29 @@ void coupleCPG(CPG* cpg1, CPG* cpg2)
     cpg2->m_coupledCPGs.push_back(cpg1);
 }
 
+/**
+ * finalisation function, to be called after init
+ * @see CPG(const double* params, std::vector<double> var)
+ */
 void CPG::finalise()
 {
     m_runge = Integrator((int)m_functions.size(), m_functions, m_variables);
 }
 
-void CPG::reset(const double ss, const double af)
-{
-    m_variables[sigma_sE] = ss;
-    m_variables[sigma_sF] = ss;
-    m_variables[Af_E] = af;
-    m_variables[Af_F] = af;
-    m_sigmaF = 2.0;
-    finalise();
-}
-
-void CPG::setSigmaF(const double sF)
-{
-    m_sigmaF = sF;
-}
-
-void CPG::setW(const double W)
-{
-    m_W = W;
-}
-
+/**
+ * sets the GPS input
+ * @param f input force */
 void CPG::setInput(const double f)
 {
     input[0] = f;
 }
 
-void CPG::setEpsilon(const double eps)
-{
-    m_variables[eps_E] = m_variables[eps_F] = eps;
-}
-
+/**
+ * step function
+ * @param vmes current joint velocity
+ * @param t current time
+ * @param dt timestep
+ */
 double CPG::step(const double vmes, const double t, const double dt)
 {
     m_variables = m_runge.rk4(t, dt);
@@ -186,24 +182,12 @@ double CPG::step(const double vmes, const double t, const double dt)
     return MNE - MNF;
 }
 
-std::vector<double> CPG::getVariables()
-{
-    return m_variables;
-}
-
-std::vector<double> CPG::getParameters()
-{
-    std::vector<double> p = {m_tauM, m_tauS, m_sigmaF, m_lambda, m_mu};
-    return p;
-}
-
+/**
+ * data getter function
+ * @return a vector
+ * @see step(const double vmes, const double t, const double dt)
+ */
 std::vector<double> CPG::getData()
 {
     return m_record;
-}
-
-
-double CPG::getOutput()
-{
-    return m_variables[V_E] - m_variables[V_F];
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2017 Melanie Jouaiti. All rights reserved.
 //
 
-
-
 #include <iostream>
 #include <math.h>
 
@@ -25,7 +23,6 @@
 #include <GLFW/glfw3.h>
 
 #include "Grapher.h"
-#include "../Simulation/Reach.h"
 #include "../Simulation/Simulation2.h"
 #include "../common.h"
 
@@ -72,10 +69,8 @@ int main()
     Shader shader((path + "shaders/shader.vs").c_str(), (path + "shaders/shader.frag").c_str());
     
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    grapher = new Grapher(22);
+    grapher = new Grapher(0);
     
-    Reach Reach(mico_names);
-    Reach.run();
     Simulation2 simulation(mico_names);
     
     simulation.init();
@@ -135,35 +130,9 @@ void position_callback(GLFWwindow* window, double xpos, double ypos)
 
 void mouse_callback(GLFWwindow* window, int button, int action, int mods)
 {
-//        if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS &&
-//           cursorPositionX < 0 && cursorPositionY < 0)
-//            grapher->changeVariable(0, 1);
-//        else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS &&
-//                cursorPositionX < 0 && cursorPositionY < 0)
-//            grapher->changeVariable(0, -1);
-//        else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS &&
-//               cursorPositionX < 0 && cursorPositionY > 0)
-//            grapher->changeVariable(1, 1);
-//        else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS &&
-//                cursorPositionX < 0 && cursorPositionY > 0)
-//            grapher->changeVariable(1, -1);
-//        else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS &&
-//                cursorPositionX > 0 && cursorPositionY > 0)
-//            grapher->changeVariable(2, 1);
-//        else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS &&
-//                cursorPositionX > 0 && cursorPositionY > 0)
-//            grapher->changeVariable(2, -1);
-//        else if(button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS &&
-//                cursorPositionX > 0 && cursorPositionY < 0)
-//            grapher->changeVariable(3, 1);
-//        else if(button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS &&
-//                cursorPositionX > 0 && cursorPositionY < 0)
-//            grapher->changeVariable(3, -1);
-
 }
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-
 }
 
 void init()

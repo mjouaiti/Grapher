@@ -43,6 +43,7 @@ private:
     std::vector<GLuint> m_VAO;                              /**< vector of VAOs */
     std::vector<GLuint> m_VBO;                              /**< vector of VBOs */
     std::vector<std::vector<glm::vec2> > m_values;          /**< values in a rendering format */
+    std::vector<double> m_maxValues;                        /**< maximum values */
 };
 
 #endif /* Grapher_h */

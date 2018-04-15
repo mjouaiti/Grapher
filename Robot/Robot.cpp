@@ -8,16 +8,28 @@
 
 #include "Robot.h"
 
+/**
+ * Robot constructor
+ * @see Robot(std::vector<std::string> jointNames)
+ */
 Robot::Robot()
 {
     
 }
 
+/**
+ * Robot constructor
+ * @param jointNames vector of robot joint names
+ * @see Robot()
+ */
 Robot::Robot(std::vector<std::string> jointNames): m_jointNames(jointNames)
 {
     
 }
 
+/**
+ * Robot destructor
+ */
 Robot::~Robot()
 {
     

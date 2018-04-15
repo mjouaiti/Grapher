@@ -29,6 +29,7 @@ public:
     Shader(const GLchar* vertexSourcePath, const GLchar* fragmentSourcePath);
     void use() const;
     ~Shader();
+    
     GLuint m_program;               /**< program id */
 };
 

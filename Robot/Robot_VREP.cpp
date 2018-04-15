@@ -21,11 +21,10 @@ Robot_VREP::Robot_VREP(): m_clientID(-1)
 
 /**
  * Robot_VREP Constructor
- * @param clientId Id of the VREP client
- * @param jointNames list of the joint names of the robot
+ * @param clientId Id of the VREP client (int)
+ * @param jointNames list of the joint names of the robot (std::vector<std::string>)
  * @see Robot_VREP()
  */
-
 Robot_VREP::Robot_VREP(const int clientId, std::vector<std::string> jointNames): Robot(jointNames), m_clientID(clientId)
 {
     std::vector<int> tmp(m_jointNames.size());
@@ -48,6 +47,8 @@ Robot_VREP::Robot_VREP(const int clientId, std::vector<std::string> jointNames):
 
 /**
  * Robot_VREP Destructor
+ * @see Robot_VREP()
+ * @see Robot_VREP(const int clientId, std::vector<std::string> jointNames)
  */
 Robot_VREP::~Robot_VREP()
 {
@@ -55,7 +56,7 @@ Robot_VREP::~Robot_VREP()
 
 /**
  * Gets the angular position of a given joint
- * @param jointID id of the joint we want to get the position of
+ * @param jointID id of the joint we want to get the position of (unsigned int)
  * @return the angular position of the joint in radians (double)
  * @see updateAngularPosition(const unsigned int index)
  * @see setPosition(const unsigned int jointID, const double pos)
@@ -69,7 +70,7 @@ double Robot_VREP::getAngularPosition(const unsigned int jointID)
 
 /**
  * Gets the angular velocity of a given joint
- * @param jointID id of the joint we want to get the velocity of
+ * @param jointID id of the joint we want to get the velocity of (unsigned int)
  * @return the angular velocity of the joint in radians (double)
  * @see updateAngularVelocity(const unsigned int index)
  * @see setVelocity(const unsigned int jointID, const double vel)
@@ -83,7 +84,7 @@ double Robot_VREP::getAngularVelocity(const unsigned int jointID)
 
 /**
  * Gets the angular force of a given joint
- * @param jointID id of the joint we want to get the force of
+ * @param jointID id of the joint we want to get the force of (unsigned int)
  * @return the angular force of the joint in radians (double)
  * @see updateAngularForce(const unsigned int index)
  * @see setForce(const unsigned int jointID, const double force)
@@ -95,16 +96,46 @@ double Robot_VREP::getAngularForce(const unsigned int jointID)
     return m_forces[jointID];
 }
 
+/**
+ * Gets the angular position of a given joint
+ * @param jointName name of the joint we want to get the position of (std::string)
+ * @return the angular position of the joint in radians (double)
+ * @see getAngularPosition(const unsigned int jointID)
+ * @see updateAngularPosition(const unsigned int index)
+ * @see setPosition(const unsigned int jointID, const double pos)
+ * @see getAngularVelocity(const unsigned int jointID)
+ * @see getAngularForce(const unsigned int jointID)
+ */
 double Robot_VREP::getAngularPosition(const std::string jointName)
 {
     return m_positions[find(m_jointNames.begin(), m_jointNames.end(), jointName) - m_jointNames.begin()];
 }
 
+/**
+ * Gets the angular velocity of a given joint
+ * @param jointName name of the joint we want to get the velocity of (std::string)
+ * @return the angular velocity of the joint in radians (double)
+ * @see getAngularForce(const unsigned int jointID)
+ * @see updateAngularVelocity(const unsigned int index)
+ * @see setVelocity(const unsigned int jointID, const double vel)
+ * @see getAngularPosition(const unsigned int jointID)
+ * @see getAngularForce(const unsigned int jointID)
+ */
 double Robot_VREP::getAngularVelocity(const std::string jointName)
 {
     return m_velocities[find(m_jointNames.begin(), m_jointNames.end(), jointName) - m_jointNames.begin()];
 }
 
+/**
+ * Gets the angular force of a given joint
+ * @param jointName name of the joint we want to get the force of (std::string)
+ * @return the angular force of the joint in radians (double)
+ * @see getAngularForce(const unsigned int jointID)
+ * @see updateAngularForce(const unsigned int index)
+ * @see setForce(const unsigned int jointID, const double force)
+ * @see getAngularPosition(const unsigned int jointID)
+ * @see getAngularVelocity(const unsigned int jointID)
+ */
 double Robot_VREP::getAngularForce(const std::string jointName)
 {
     return m_forces[find(m_jointNames.begin(), m_jointNames.end(), jointName) - m_jointNames.begin()];
@@ -112,7 +143,8 @@ double Robot_VREP::getAngularForce(const std::string jointName)
 
 /**
  * Sets the angular position of a given joint
- * @param jointID id of the joint we want to set the position of
+ * @param jointID id of the joint we want to set the position of (unsigned int)
+ * @param pos angular position to be applied (double)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularPosition(const unsigned int index)
  * @see getAngularPosition(const unsigned int jointID)
@@ -126,7 +158,8 @@ bool Robot_VREP::setPosition(const unsigned int jointID, const double pos)
 
 /**
  * Sets the angular velocity of a given joint
- * @param jointID id of the joint we want to set the velocity of
+ * @param jointID id of the joint we want to set the velocity of (unsigned int)
+ * @param speed angular velocity to be applied (double)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularVelocity(const unsigned int index)
  * @see getAngularVelocity(const unsigned int jointID)
@@ -140,7 +173,8 @@ bool Robot_VREP::setVelocity(const unsigned int jointID, const double speed)
 
 /**
  * Sets the angular force of a given joint
- * @param jointID id of the joint we want to set the force of
+ * @param jointID id of the joint we want to set the force of (unsigned int)
+ * @param force force to be applied (double)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularForce(const unsigned int index)
  * @see getAngularForce(const unsigned int jointID)
@@ -152,6 +186,19 @@ bool Robot_VREP::setForce(const unsigned int jointID, const double force)
     return setForce(m_jointNames[jointID], force);
 }
 
+/**
+ * Sets the angular velocity of a given joint
+ * @param jointName name of the joint we want to set the position of (std::string)
+ * @param pos angular position to be applied (double)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularPosition(const unsigned int index)
+ * @see getAngularPosition(const unsigned int jointID)
+ * @see setPosition(const std::string jointName, const double pos)
+ * @see setVelocity(const std::string jointName, const double speed)
+ * @see setForce(const std::string jointName, const double force)
+ * @see setVelocity(const std::string jointName, const double speed)
+ * @see setForce(const unsigned int jointID, const double force)
+ */
 bool Robot_VREP::setPosition(const std::string jointName, const double pos)
 {
     int err = simxSetJointTargetPosition(m_clientID, m_jointHandles[jointName], (float)pos, simx_opmode_blocking);
@@ -160,6 +207,19 @@ bool Robot_VREP::setPosition(const std::string jointName, const double pos)
     return err == simx_return_ok;
 }
 
+/**
+ * Sets the angular velocity of a given joint
+ * @param jointName name of the joint we want to set the velocity of (std::string)
+ * @param speed angular velocity to be applied (double)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularVelocity(const unsigned int index)
+ * @see getAngularVelocity(const unsigned int jointID)
+ * @see setVelocity(const std::string jointName, const double speed)
+ * @see setForce(const std::string jointName, const double force)
+ * @see setPosition(const std::string jointName, const double pos)
+ * @see setPosition(const unsigned int jointID, const double pos)
+ * @see setForce(const unsigned int jointID, const double force)
+ */
 bool Robot_VREP::setVelocity(const std::string jointName, const double speed)
 {
     int err = simxSetJointTargetVelocity(m_clientID, m_jointHandles[jointName], (float)speed, simx_opmode_blocking);
@@ -168,6 +228,19 @@ bool Robot_VREP::setVelocity(const std::string jointName, const double speed)
     return err == simx_return_ok;
 }
 
+/**
+ * Sets the angular force of a given joint
+ * @param jointName name of the joint we want to set the force of (std::string)
+ * @param force force to be applied (double)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularForce(const unsigned int index)
+ * @see setForce(const unsigned int jointID, const double force)
+ * @see getAngularForce(const unsigned int jointID)
+ * @see setVelocity(const std::string jointName, const double speed)
+ * @see setPosition(const std::string jointName, const double pos)
+ * @see setPosition(const unsigned int jointID, const double pos)
+ * @see setVelocity(const unsigned int jointID, const double speed)
+ */
 bool Robot_VREP::setForce(const std::string jointName, const double force)
 {
     int err = simxSetJointForce(m_clientID, m_jointHandles[jointName], (float)force, simx_opmode_blocking);
@@ -178,7 +251,7 @@ bool Robot_VREP::setForce(const std::string jointName, const double force)
 
 /**
  * Updates the angular position of a given joint
- * @param index (optional) id of the joint we want to update. If not set, will update every joint
+ * @param index (optional) id of the joint we want to update. If not set, will update every joint (unsigned int)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularVelocity(const unsigned int index)
  * @see updateAngularForce(const unsigned int index)
@@ -192,7 +265,7 @@ bool Robot_VREP::updateAngularPosition(const unsigned int index)
 
 /**
  * Updates the angular velocity of a given joint
- * @param index (optional) id of the joint we want to update. If not set, will update every joint
+ * @param index (optional) id of the joint we want to update. If not set, will update every joint (unsigned int)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularPosition(const unsigned int index)
  * @see updateAngularForce(const unsigned int index)
@@ -206,7 +279,7 @@ bool Robot_VREP::updateAngularVelocity(const unsigned int index)
 
 /**
  * Updates the angular force of a given joint (Be careful not to call this function more than necessary since it's terribly slow)
- * @param index (optional) id of the joint we want to update. If not set, will update every joint
+ * @param index (optional) id of the joint we want to update. If not set, will update every joint (unsigned int)
  * @return true if the operation succeeded, false otherwise (bool)
  * @see updateAngularPosition(const unsigned int index)
  * @see updateAngularVelocity(const unsigned int index)
@@ -218,6 +291,16 @@ bool Robot_VREP::updateAngularForce(const unsigned int index)
     return updateAngularForce(index == -1? "": m_jointNames[index]);
 }
 
+/**
+ * Updates the angular position of a given joint
+ * @param jointName (optional) name of the joint we want to update. If not set, will update every joint (std::string)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularPosition(const unsigned int index)
+ * @see updateAngularVelocity(const unsigned int index)
+ * @see updateAngularForce(const unsigned int index)
+ * @see getAngularPosition(const unsigned int jointID)
+ * @see setPosition(const unsigned int jointID, const double pos)
+ */
 bool Robot_VREP::updateAngularPosition(const std::string jointName)
 {
     int err = simx_return_ok;
@@ -244,6 +327,16 @@ bool Robot_VREP::updateAngularPosition(const std::string jointName)
     return err == simx_return_ok;
 }
 
+/**
+ * Updates the angular velocity of a given joint
+ * @param jointName (optional) name of the joint we want to update. If not set, will update every joint (std::string)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularVelocity(const unsigned int index)
+ * @see updateAngularPosition(const unsigned int index)
+ * @see updateAngularForce(const unsigned int index)
+ * @see getAngularVelocity(const unsigned int jointID)
+ * @see setVelocity(const unsigned int jointID, const double speed)
+ */
 bool Robot_VREP::updateAngularVelocity(const std::string jointName)
 {
     int err = simx_return_ok;
@@ -271,6 +364,16 @@ bool Robot_VREP::updateAngularVelocity(const std::string jointName)
     return err == simx_return_ok;
 }
 
+/**
+ * Updates the angular force of a given joint (Be careful not to call this function more than necessary since it's terribly slow)
+ * @param jointName (optional) name of the joint we want to update. If not set, will update every joint (std::string)
+ * @return true if the operation succeeded, false otherwise (bool)
+ * @see updateAngularForce(const unsigned int index)
+ * @see updateAngularPosition(const unsigned int index)
+ * @see updateAngularVelocity(const unsigned int index)
+ * @see getAngularForce(const unsigned int jointID)
+ * @see setForce(const unsigned int jointID, const double force)
+ */
 bool Robot_VREP::updateAngularForce(const std::string jointName)
 {
     int err = simx_return_ok;
@@ -297,29 +400,14 @@ bool Robot_VREP::updateAngularForce(const std::string jointName)
     return err == simx_return_ok;
 }
 
-/**
- * Is supposed to lock the joint so that it can't move (doesn't seem to be working...)
- * @param jointHandle handle of the joint to lock
- * @return true if the operation succeeded, false otherwise (bool)
- */
-bool Robot_VREP::lockJoint(const int jointHandle)
-{
-    int err;
-    err = simxSetObjectIntParameter(m_clientID, jointHandle, 2001, 1, simx_opmode_blocking);
-    float pos[1];
-    err |= simxGetJointPosition(m_clientID, jointHandle, pos, simx_opmode_blocking);
-    err |= simxSetJointTargetPosition(m_clientID, jointHandle, pos[0], simx_opmode_blocking);
-    return err == simx_return_ok;
-}
-
 /*
  * Close the robot gripper. (Warning: This fonction is gripper specific, if you use a different gripper, you'll have to adapt it)
- * @param motor Handles (pretty useless, the position control part does it all)
+ * @param motorHandles motors the closing velocity will be applied to (int*)
  * @return whether the operation succedeed (bool)
  */
 bool Robot_VREP::closeGripper(const int* motorHandles)
 {
-    float speed = -0.004;
+    float speed = -0.1;
     int err = simx_return_ok;
     for(unsigned int i = 4; i < 4; i++)
     {
@@ -330,21 +418,21 @@ bool Robot_VREP::closeGripper(const int* motorHandles)
     
     int finger;
     err = simxGetObjectHandle(m_clientID, "JacoHand_joint1_finger1", &finger, simx_opmode_blocking);
-    err = simxSetJointTargetPosition(m_clientID, finger, 5.0 / 180.0 * M_PI, simx_opmode_blocking);
+    err = simxSetJointTargetPosition(m_clientID, finger, 10.0 / 180.0 * M_PI, simx_opmode_blocking);
     if(err != simx_return_ok)
         std::cerr << "Could not set Position for finger: JacoHand_joint1_finger1" << std::endl;
     err = simxGetObjectHandle(m_clientID, "JacoHand_joint2_finger1", &finger, simx_opmode_blocking);
-    err = simxSetJointTargetPosition(m_clientID, finger, 70.0 / 180.0 * M_PI, simx_opmode_blocking);
+    err = simxSetJointTargetPosition(m_clientID, finger, 75.0 / 180.0 * M_PI, simx_opmode_blocking);
     if(err != simx_return_ok)
         std::cerr << "Could not set Position for finger: JacoHand_joint2_finger1" << std::endl;
     
     err = simxGetObjectHandle(m_clientID, "JacoHand_joint2_finger2", &finger, simx_opmode_blocking);
-    err = simxSetJointTargetPosition(m_clientID, finger, 65.0 / 180.0 * M_PI, simx_opmode_blocking);
+    err = simxSetJointTargetPosition(m_clientID, finger, 70.0 / 180.0 * M_PI, simx_opmode_blocking);
     if(err != simx_return_ok)
         std::cerr << "Could not set Position for finger: JacoHand_joint2_finger2" << std::endl;
     
     err = simxGetObjectHandle(m_clientID, "JacoHand_joint2_finger3", &finger, simx_opmode_blocking);
-    err = simxSetJointTargetPosition(m_clientID, finger, 65.0 / 180.0 * M_PI, simx_opmode_blocking);
+    err = simxSetJointTargetPosition(m_clientID, finger, 70.0 / 180.0 * M_PI, simx_opmode_blocking);
     if(err != simx_return_ok)
         std::cerr << "Could not set Position for finger: JacoHand_joint2_finger3" << std::endl;
     
@@ -354,7 +442,7 @@ bool Robot_VREP::closeGripper(const int* motorHandles)
 
 /*
  * Open the robot gripper. (Warning: This fonction is gripper specific, if you use a different gripper, you'll have to adapt it)
- * @param motor Handles (pretty useless, the position control part does it all)
+ * @param motorHandles motors the opening velocity will be applied to (int*)
  * @return whether the operation succedeed (bool)
  */
 bool Robot_VREP::openGripper(const int* motorHandles)
@@ -400,48 +488,3 @@ bool Robot_VREP::openGripper(const int* motorHandles)
     
     return err == simx_return_ok;
 }
-
-////--------------------- Time
-///**
-// * Starts the clock
-// * @see updateClock()
-// * @see getMicroseconds()
-// * @see getSeconds()
-// */
-//void Robot_VREP::startClock() {
-//    m_startTime = std::chrono::high_resolution_clock::now();
-//    m_currentTime = m_startTime;
-//}
-//
-///**
-// * Updates the clock
-// * @see startClock()
-// * @see getMicroseconds()
-// * @see getSeconds()
-// */
-//void Robot_VREP::updateClock() {
-//    m_currentTime = std::chrono::high_resolution_clock::now();
-//}
-//
-///**
-// * Updates the clock
-// * @return elapsed time in microseconds (double)
-// * @see startClock()
-// * @see updateClock()
-// * @see getSeconds()
-// */
-//double Robot_VREP::getMicroseconds() {
-//    return std::chrono::duration_cast<std::chrono::microseconds>(m_currentTime-m_startTime).count();
-//}
-//
-///**
-// * Updates the clock
-// * @return elapsed time in seconds (double)
-// * @see startClock()
-// * @see updateClock()
-// * @see getMicroseconds()
-// */
-//double Robot_VREP::getSeconds() {
-//    return std::chrono::duration_cast<std::chrono::microseconds>(m_currentTime-m_startTime).count() / 1000000.0;
-//}
-

@@ -20,7 +20,7 @@ double r(double x, double y)
 
 /**
  * Pattern Formation Neuron
- * @param Vi V1 or V2
+ * @param Vi output of the rhytmic neuron
  */
 double PF(double Vi)
 {
@@ -52,30 +52,24 @@ double MN(double PFi, double Si)
  */
 double inputSignal(double t)
 {
-    //return 0.08 * sin(2 * 2 * M_PI * t) * (t < TMAX - 10);
-    if(t < 20)
-        return 0.08 * sin(0.5 * 2 * M_PI * (t - 0));
-    else if(t < 40)
-        return 0.08 * sin(1.0 * 2 * M_PI * (t - 20));
-    else if(t < 60)
-        return 0.08 * sin(1.5 * 2 * M_PI * (t - 40));
-    else if(t < 80)
-        return 0.08 * sin(2.0 * 2 * M_PI * (t - 60));
+    return 0.08 * sin(2 * 2 * M_PI * t) * (t < TMAX - 10);
+    if(t < 35)
+        return 0.08 * sin(2.0 * 2 * M_PI * (t - 0));
+    else if(t < 70)
+        return 0.08 * sin(1.0 * 2 * M_PI * (t - 35));
     else if(t < 100)
-        return 0.08 * sin(1.5 * 2 * M_PI * (t - 80));
+        return 0.08 * sin(2.0 * 2 * M_PI * (t - 70));
+    else if(t < 120)
+        return 0.08 * sin(2.5 * 2 * M_PI * (t - 100));
     else
         return 0;
 }
 
 /**
- * Input Signal (sinusoidal at 2 Hz, amplitude 0.3)
- * @param t time t
+ * theta function
+ * @param V output of the rhytmic neuron
+ * @param y derivative of V
  */
-double inputSignal2(double t)
-{
-    return .15 * sin(2 * 2 * M_PI * (t - 5)) * (t < 40.0 && t > 5);
-}
-
 double theta(double V, double y) {
     return (2*(V >= 0) - 1) * acos(-y / sqrt(V*V + y*y));
 }

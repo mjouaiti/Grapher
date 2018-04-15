@@ -10,18 +10,6 @@
 #include "../common.h"
 #include <algorithm>
 
-float scale[NB_VARIABLES] {
-    1.0, 1.0,
-    18.0/M_PI, 1.0, 1.0/250.0,
-    1.0, 1.0, 1.0/2.0, 1.0/2.0, 1.0/70.0, 1.0/70.0,
-    10.0, 10.0, 10.0, 10.0, 0.9/M_PI, 0.9/M_PI,
-    1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
-    18.0/M_PI, 1.0, 1.0/250.0,
-    1.0, 1.0, 1.0/2.0, 1.0/2.0, 1.0/70.0, 1.0/70.0,
-    10.0, 10.0, 10.0, 10.0, 0.9/M_PI, 0.9/M_PI,
-    1.0, 1.0, 1.0, 1.0, 1.0, 1.0
-};
-
 /**
  * Simulation2 Constructor
  * @see Simulation2(std::vector<std::string> jointNames)
@@ -32,7 +20,7 @@ Simulation2::Simulation2(): Simulation()
 
 /**
  * Simulation2 Constructor
- * @param jointNames joint names of the robot
+ * @param jointNames joint names of the robot (std::vector<std::string>)
  * @see Simulation2()
  */
 Simulation2::Simulation2(std::vector<std::string> jointNames): Simulation(jointNames)
@@ -44,18 +32,13 @@ Simulation2::Simulation2(std::vector<std::string> jointNames): Simulation(jointN
     m_PIDControllers.push_back(PIDController(PID_P, PID_I, PID_D));
 #endif
     
-    std::vector<double> variables{0.0, -0.216, 20.0, 0.0, -0.216, 20.0,
-        .05, .05, .2, .2};
-    std::vector<double> variables2{0.0, -0.216, 20.0, 0.0, -0.216, 20.0,
-        .09, .09, .3, .3};
+    std::vector<double> variables{0.0, -0.216, 10.0, 0.0, -0.216, 10.0,
+        0.05, 0.05, 0.01, 0.01};
+    std::vector<double> variables2{0.0, -0.216, 10.0, 0.0, -0.216, 10.0,
+        0.05, 0.05, 0.02, 0.02};
     
-    std::vector<double> M_variables{0.01, 0.008, 0.002, 0.006};
-    std::vector<double> H_variables{0.01, 0.008, 7, 0.01, 0.008, 7, 0.4, 0.2};
-    std::vector<double> H_variables2{0.01, 0.008, 7, 0.01, 0.008, 7, 0.6, 0.25};
-    
-    
-    double param[] = {0.35, 3.5, 1.0, 0.0002, 0.000005};
-    double param2[] = {0.35, 3.5, 1.0, 0.0002, 0.000008};
+    double param[] = {0.35, 3.5, 1.0, 0.000, 0.00000};
+    double param2[] = {0.35, 3.5, 1.0, 0.000, 0.00000};
     
     m_CPGs["Mico_joint2"] = new CPG(param, variables);
     m_CPGs["Mico_joint3"] = new CPG(param2, variables2);
@@ -72,46 +55,6 @@ Simulation2::Simulation2(std::vector<std::string> jointNames): Simulation(jointN
 }
 
 /**
- * Copy constructor. To be used mostly after an Reach run. (Warning: We are NOT copying the parameter simulation, this function is designed to run a Simulation after an Reach. Any other use may lead to unexpected behavior)
- * @param simulation Simulation to take over
- */
-Simulation2::Simulation2(const Simulation& simulation)
-{
-    m_startForce = new float[2];
-#ifdef VREP
-    m_PIDControllers.push_back(PIDController(PID_P, PID_I, PID_D));
-    m_PIDControllers.push_back(PIDController(PID_P, PID_I, PID_D));
-#endif
-    
-    std::vector<double> variables{0.0, -0.216, 20.0, 0.0, -0.216, 20.0,
-        .05, .05, 1, 1};
-    std::vector<double> variables2{0.0, -0.216, 20.0, 0.0, -0.216, 20.0,
-        .09, .09, 1, 1};
-    
-    double param[] = {0.35, 3.5, 1.0, 0.0002, 0.000005};
-    double param2[] = {0.35, 3.5, 1.0, 0.0002, 0.000008};
-    
-    m_CPGs["Mico_joint2"] = new CPG(param, variables);
-    m_CPGs["Mico_joint3"] = new CPG(param2, variables2);
-    
-    coupleCPG(m_CPGs["Mico_joint2"], m_CPGs["Mico_joint3"]);
-    for(auto p: m_CPGs)
-        p.second->finalise();
-    
-    m_t = simulation.getTime();
-    m_dt = simulation.getTimeStep();
-    m_robot = simulation.getRobot();
-
-    m_clientID = simulation.getClientId();
-    m_sphereHandle = simulation.getSphereHandle();
-    
-    int err = simxGetObjectHandle(m_clientID, "Sphere", &m_sphereHandle, simx_opmode_blocking);
-    err = simxGetObjectPosition(m_clientID, m_sphereHandle, -1, m_initPos, simx_opmode_blocking);
-    if(err != simx_return_ok)
-        std::cerr << "Couldn't get sphere position" << std::endl;
-}
-
-/**
  * Simulation2 Destructor
  */
 Simulation2::~Simulation2()
@@ -120,7 +63,7 @@ Simulation2::~Simulation2()
 #if defined(__linux__)
     saveToFile("/home/melanie/Documents/log/");
 #else
-    saveToFile("/Users/Melanie/Downloads/log/TwoJoints/neuronOnly/kasuga/");
+    saveToFile("/Users/Melanie/Downloads/log/TwoJoints/new/");
 #endif
 }
 
@@ -129,8 +72,8 @@ Simulation2::~Simulation2()
  */
 void Simulation2::init()
 {
-    m_startForce[0] =  -20;//m_robot->getAngularForce(JOINT_NB1);
-    m_startForce[1] = 10;//m_robot->getAngularForce(JOINT_NB2);
+    m_startForce[0] = 1.24;
+    m_startForce[1] = 2.62;
 }
 
 /**
@@ -164,8 +107,10 @@ std::vector<double> Simulation2::step()
     for(auto p: m_CPGs)
     {
         p.second->setInput((m_t < TMAX - 10)?(m_robot->getAngularForce(p.first) - m_startForce[i]): 0);
+//        p.second->setInput((m_t < TMAX - 10)?(m_robot->getAngularVelocity(p.first)): 0);
+//        p.second->setInput((m_t < TMAX - 10)?(m_robot->getAngularPosition(p.first) - m_startForce[i]): 0);
         float vmes = m_robot->getAngularVelocity(p.first);
-        speed[i] =  0.5 * p.second->step(vmes, m_t, m_dt);
+        speed[i] =  10.0 * p.second->step(vmes, m_t, m_dt);
         
         m_robot->setVelocity(p.first, m_PIDControllers[i].update(m_robot->getAngularPosition(p.first), speed[i]));
         
@@ -188,11 +133,11 @@ std::vector<double> Simulation2::step()
 
 /**
  * saves the recorded values into a csv file
- * @param path path of the file where the values are saved
+ * @param path path of the file where the values are saved (std::string)
  */
 void Simulation2::saveToFile(const std::string& path)
 {
-    std::string fileName = "Sim.csv";
+    std::string fileName = ".csv";
     std::ofstream out(path + fileName, std::ios::out);
     if(!out.is_open())
         std::cerr << "Could not open file: " << path + fileName << std::endl;
