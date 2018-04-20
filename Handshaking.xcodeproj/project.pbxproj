@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		615EF9761F7CD13700FD584C /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
-		615EF9771F7CD14700FD584C /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
-		615EF9791F7E053B00FD584C /* Integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9781F7E053B00FD584C /* Integrator.cpp */; };
 		615EF9871F7E1DCC00FD584C /* Grapher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9851F7E1DCC00FD584C /* Grapher.cpp */; };
 		615EF9891F7E1F7100FD584C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF9881F7E1F7100FD584C /* Cocoa.framework */; };
 		615EF98B1F7E1F7D00FD584C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98A1F7E1F7D00FD584C /* OpenGL.framework */; };
@@ -24,85 +21,19 @@
 		617EEFE41FB4C15D00676D6E /* Robot_VREP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE31FB4C15D00676D6E /* Robot_VREP.cpp */; };
 		617EEFE81FB4C5D300676D6E /* Simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE71FB4C5D300676D6E /* Simulation.cpp */; };
 		617EEFF61FB5A81900676D6E /* Integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9781F7E053B00FD584C /* Integrator.cpp */; };
-		6191E4BB1F8A50BF00E53FFE /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
-		6191E4BC1F8A50BF00E53FFE /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
 		6191E4BD1F8A50BF00E53FFE /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
-		6191E4BF1F8B8EFF00E53FFE /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
-		61A8C7091F98C0DF009ED261 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8C7081F98C0DF009ED261 /* common.cpp */; };
 		61A8C70A1F98C0DF009ED261 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8C7081F98C0DF009ED261 /* common.cpp */; };
-		61AC6C971F7649EE00B25F12 /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
-		61AC6C981F7649EE00B25F12 /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
-		61AC6CC11F77ED4B00B25F12 /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
-		61AC6CCB1F77EE7800B25F12 /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
-		61AC6CDB1F7A316C00B25F12 /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
-		61AC6CDC1F7A316E00B25F12 /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
 		61BBDE8B1FDEC49A00B7244B /* Simulation2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 619DCED11F9E3B4800AEFB2F /* Simulation2.cpp */; };
-		61BBDFD51FE95DFB00B7244B /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */; };
-		61BBDFD61FE95DFB00B7244B /* libopencv_highgui.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */; };
-		61BBDFD71FE95DFB00B7244B /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */; };
-		61CD0C9D200F36F50045BD27 /* Robot_VREP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE31FB4C15D00676D6E /* Robot_VREP.cpp */; };
 		61CD0CA52010DD980045BD27 /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */; };
 		61CD0CA62010DD980045BD27 /* libopencv_highgui.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */; };
 		61CD0CA72010DD980045BD27 /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */; };
 		61CD0CAA2010DD990045BD27 /* libopencv_objdetect.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CD0CA82010DD980045BD27 /* libopencv_objdetect.3.3.0.dylib */; };
 		61CD0CAB2010DD990045BD27 /* libopencv_videoio.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CD0CA92010DD990045BD27 /* libopencv_videoio.3.3.0.dylib */; };
-		61D302C51FE96091007E2FB2 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8C7081F98C0DF009ED261 /* common.cpp */; };
-		61D302C61FE96091007E2FB2 /* Integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9781F7E053B00FD584C /* Integrator.cpp */; };
-		61D302C71FE96093007E2FB2 /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFDF1FB4C13300676D6E /* Robot.cpp */; };
-		61D302C81FE96096007E2FB2 /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
-		61D302C91FE96098007E2FB2 /* Simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE71FB4C5D300676D6E /* Simulation.cpp */; };
-		61D302CF1FE961B1007E2FB2 /* libqitype.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDFAC1FE94D7100B7244B /* libqitype.dylib */; };
 		61D302E31FEF9697007E2FB2 /* CPG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61D302E11FEF9697007E2FB2 /* CPG.cpp */; };
-		61D302E41FEF9697007E2FB2 /* CPG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61D302E11FEF9697007E2FB2 /* CPG.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		615EF96C1F7CCEB000FD584C /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		615EF97C1F7E086A00FD584C /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		617EEFEB1FB597B100676D6E /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		61AC6C841F75164C00B25F12 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		61AC6CB71F77ECFC00B25F12 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-		61AC6CD21F7A2F3200B25F12 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -114,7 +45,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		615EF96E1F7CCEB000FD584C /* FrequencePropre */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FrequencePropre; sourceTree = BUILT_PRODUCTS_DIR; };
 		615EF9781F7E053B00FD584C /* Integrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Integrator.cpp; path = "lib-cpg/Integrator.cpp"; sourceTree = "<group>"; };
 		615EF97E1F7E086A00FD584C /* Graphical */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphical; sourceTree = BUILT_PRODUCTS_DIR; };
 		615EF9801F7E086A00FD584C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -135,7 +65,6 @@
 		617EEFE51FB4C5BB00676D6E /* Simulation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simulation2.h; path = Simulation/Simulation2.h; sourceTree = "<group>"; };
 		617EEFE61FB4C5D200676D6E /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simulation.h; path = Simulation/Simulation.h; sourceTree = "<group>"; };
 		617EEFE71FB4C5D300676D6E /* Simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Simulation.cpp; path = Simulation/Simulation.cpp; sourceTree = "<group>"; };
-		617EEFED1FB597B100676D6E /* Waving */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Waving; sourceTree = BUILT_PRODUCTS_DIR; };
 		617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
 		6191E49A1F84C7CE00E53FFE /* v_repConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = v_repConst.h; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include/v_repConst.h"; sourceTree = "<group>"; };
 		6191E4B81F88B9F500E53FFE /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
@@ -143,12 +72,9 @@
 		6191E4BA1F8A50BF00E53FFE /* PIDController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIDController.h; sourceTree = "<group>"; };
 		619DCED11F9E3B4800AEFB2F /* Simulation2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Simulation2.cpp; path = Simulation/Simulation2.cpp; sourceTree = "<group>"; };
 		61A8C7081F98C0DF009ED261 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
-		61AC6C861F75164C00B25F12 /* Handshaking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Handshaking; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC6C921F75168D00B25F12 /* remoteApi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = remoteApi.dylib; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApiBindings/lib/lib/remoteApi.dylib"; sourceTree = "<group>"; };
 		61AC6C951F7649EE00B25F12 /* extApi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApi.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApi.c"; sourceTree = "<absolute>"; };
 		61AC6C961F7649EE00B25F12 /* extApiPlatform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApiPlatform.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApiPlatform.c"; sourceTree = "<absolute>"; };
-		61AC6CB91F77ECFC00B25F12 /* Handshaking2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Handshaking2; sourceTree = BUILT_PRODUCTS_DIR; };
-		61AC6CD41F7A2F3200B25F12 /* Handshaking2b */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Handshaking2b; sourceTree = BUILT_PRODUCTS_DIR; };
 		61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_imgproc.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_highgui.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE981FE926D700B7244B /* libqi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqi.dylib; path = "../../../../naoqi-sdk-2.1.4.13-mac64/lib/libqi.dylib"; sourceTree = "<group>"; };
@@ -298,13 +224,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		615EF96B1F7CCEB000FD584C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		615EF97B1F7E086A00FD584C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,38 +238,6 @@
 				615EF98D1F7E1F8D00FD584C /* CoreVideo.framework in Frameworks */,
 				615EF98B1F7E1F7D00FD584C /* OpenGL.framework in Frameworks */,
 				615EF9891F7E1F7100FD584C /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		617EEFEA1FB597B100676D6E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				61D302CF1FE961B1007E2FB2 /* libqitype.dylib in Frameworks */,
-				61BBDFD51FE95DFB00B7244B /* libopencv_core.3.3.0.dylib in Frameworks */,
-				61BBDFD61FE95DFB00B7244B /* libopencv_highgui.3.3.0.dylib in Frameworks */,
-				61BBDFD71FE95DFB00B7244B /* libopencv_imgproc.3.3.0.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6C831F75164C00B25F12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6CB61F77ECFC00B25F12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6CD11F7A2F3200B25F12 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,12 +288,7 @@
 		61AC6C871F75164C00B25F12 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				61AC6C861F75164C00B25F12 /* Handshaking */,
-				61AC6CB91F77ECFC00B25F12 /* Handshaking2 */,
-				61AC6CD41F7A2F3200B25F12 /* Handshaking2b */,
-				615EF96E1F7CCEB000FD584C /* FrequencePropre */,
 				615EF97E1F7E086A00FD584C /* Graphical */,
-				617EEFED1FB597B100676D6E /* Waving */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -571,23 +453,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		615EF96D1F7CCEB000FD584C /* FrequencePropre */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 615EF9741F7CCEB100FD584C /* Build configuration list for PBXNativeTarget "FrequencePropre" */;
-			buildPhases = (
-				615EF96A1F7CCEB000FD584C /* Sources */,
-				615EF96B1F7CCEB000FD584C /* Frameworks */,
-				615EF96C1F7CCEB000FD584C /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FrequencePropre;
-			productName = FrequencePropre;
-			productReference = 615EF96E1F7CCEB000FD584C /* FrequencePropre */;
-			productType = "com.apple.product-type.tool";
-		};
 		615EF97D1F7E086A00FD584C /* Graphical */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 615EF9821F7E086A00FD584C /* Build configuration list for PBXNativeTarget "Graphical" */;
@@ -605,74 +470,6 @@
 			productReference = 615EF97E1F7E086A00FD584C /* Graphical */;
 			productType = "com.apple.product-type.tool";
 		};
-		617EEFEC1FB597B100676D6E /* Waving */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 617EEFF11FB597B100676D6E /* Build configuration list for PBXNativeTarget "Waving" */;
-			buildPhases = (
-				617EEFE91FB597B100676D6E /* Sources */,
-				617EEFEA1FB597B100676D6E /* Frameworks */,
-				617EEFEB1FB597B100676D6E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Waving;
-			productName = Waving;
-			productReference = 617EEFED1FB597B100676D6E /* Waving */;
-			productType = "com.apple.product-type.tool";
-		};
-		61AC6C851F75164C00B25F12 /* Handshaking */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 61AC6C8D1F75164C00B25F12 /* Build configuration list for PBXNativeTarget "Handshaking" */;
-			buildPhases = (
-				61AC6C821F75164C00B25F12 /* Sources */,
-				61AC6C831F75164C00B25F12 /* Frameworks */,
-				61AC6C841F75164C00B25F12 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Handshaking;
-			productName = Handshaking;
-			productReference = 61AC6C861F75164C00B25F12 /* Handshaking */;
-			productType = "com.apple.product-type.tool";
-		};
-		61AC6CB81F77ECFC00B25F12 /* Handshaking2 */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 61AC6CBD1F77ECFC00B25F12 /* Build configuration list for PBXNativeTarget "Handshaking2" */;
-			buildPhases = (
-				61AC6CB51F77ECFC00B25F12 /* Sources */,
-				61AC6CB61F77ECFC00B25F12 /* Frameworks */,
-				61AC6CB71F77ECFC00B25F12 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Handshaking2;
-			productName = Handshaking2;
-			productReference = 61AC6CB91F77ECFC00B25F12 /* Handshaking2 */;
-			productType = "com.apple.product-type.tool";
-		};
-		61AC6CD31F7A2F3200B25F12 /* Handshaking2b */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 61AC6CD81F7A2F3300B25F12 /* Build configuration list for PBXNativeTarget "Handshaking2b" */;
-			buildPhases = (
-				61AC6CD01F7A2F3200B25F12 /* Sources */,
-				61AC6CD11F7A2F3200B25F12 /* Frameworks */,
-				61AC6CD21F7A2F3200B25F12 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Handshaking2b;
-			productName = Handshaking2b;
-			productReference = 61AC6CD41F7A2F3200B25F12 /* Handshaking2b */;
-			productType = "com.apple.product-type.tool";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -682,27 +479,7 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Melanie Jouaiti";
 				TargetAttributes = {
-					615EF96D1F7CCEB000FD584C = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-					};
 					615EF97D1F7E086A00FD584C = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-					};
-					617EEFEC1FB597B100676D6E = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
-					61AC6C851F75164C00B25F12 = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-					};
-					61AC6CB81F77ECFC00B25F12 = {
-						CreatedOnToolsVersion = 8.3.3;
-						ProvisioningStyle = Automatic;
-					};
-					61AC6CD31F7A2F3200B25F12 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
 					};
@@ -720,28 +497,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				61AC6C851F75164C00B25F12 /* Handshaking */,
-				61AC6CB81F77ECFC00B25F12 /* Handshaking2 */,
-				61AC6CD31F7A2F3200B25F12 /* Handshaking2b */,
-				615EF96D1F7CCEB000FD584C /* FrequencePropre */,
 				615EF97D1F7E086A00FD584C /* Graphical */,
-				617EEFEC1FB597B100676D6E /* Waving */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		615EF96A1F7CCEB000FD584C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				615EF9791F7E053B00FD584C /* Integrator.cpp in Sources */,
-				615EF9761F7CD13700FD584C /* extApi.c in Sources */,
-				615EF9771F7CD14700FD584C /* extApiPlatform.c in Sources */,
-				6191E4BC1F8A50BF00E53FFE /* PIDController.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		615EF97A1F7E086A00FD584C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -762,81 +523,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		617EEFE91FB597B100676D6E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				61D302C51FE96091007E2FB2 /* common.cpp in Sources */,
-				61D302C61FE96091007E2FB2 /* Integrator.cpp in Sources */,
-				61D302C81FE96096007E2FB2 /* PIDController.cpp in Sources */,
-				61D302E41FEF9697007E2FB2 /* CPG.cpp in Sources */,
-				61D302C71FE96093007E2FB2 /* Robot.cpp in Sources */,
-				61CD0C9D200F36F50045BD27 /* Robot_VREP.cpp in Sources */,
-				61D302C91FE96098007E2FB2 /* Simulation.cpp in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6C821F75164C00B25F12 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				61AC6C981F7649EE00B25F12 /* extApiPlatform.c in Sources */,
-				61AC6C971F7649EE00B25F12 /* extApi.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6CB51F77ECFC00B25F12 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6191E4BB1F8A50BF00E53FFE /* PIDController.cpp in Sources */,
-				61AC6CCB1F77EE7800B25F12 /* extApiPlatform.c in Sources */,
-				61AC6CC11F77ED4B00B25F12 /* extApi.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		61AC6CD01F7A2F3200B25F12 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				61A8C7091F98C0DF009ED261 /* common.cpp in Sources */,
-				6191E4BF1F8B8EFF00E53FFE /* PIDController.cpp in Sources */,
-				61AC6CDB1F7A316C00B25F12 /* extApi.c in Sources */,
-				61AC6CDC1F7A316E00B25F12 /* extApiPlatform.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		615EF9721F7CCEB100FD584C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					"MAX_EXT_API_CONNECTIONS=255",
-					"NON_MATLAB_PARSING=1",
-				);
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		615EF9731F7CCEB100FD584C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		615EF9831F7E086A00FD584C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -875,72 +564,6 @@
 					/usr/lib,
 					/usr/local/lib,
 					/usr/local/Cellar/opencv/3.3.0_3/lib,
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		617EEFF21FB597B100676D6E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-					"/Users/Melanie/naoqi-sdk-2.1.4.13-mac64/include",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/X11/lib,
-					/usr/lib,
-					/usr/local/lib,
-					/usr/local/Cellar/opencv/3.3.0_3/lib,
-					"/Users/Melanie/naoqi-sdk-2.1.4.13-mac64/lib",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		617EEFF31FB597B100676D6E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				HEADER_SEARCH_PATHS = (
-					/usr/local/include,
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-					"/Users/Melanie/naoqi-sdk-2.1.4.13-mac64/include",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					/usr/X11/lib,
-					/usr/lib,
-					/usr/local/lib,
-					/usr/local/Cellar/opencv/3.3.0_3/lib,
-					"/Users/Melanie/naoqi-sdk-2.1.4.13-mac64/lib",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1048,93 +671,9 @@
 			};
 			name = Release;
 		};
-		61AC6C8E1F75164C00B25F12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"MAX_EXT_API_CONNECTIONS=255",
-					"NON_MATLAB_PARSING=1",
-				);
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		61AC6C8F1F75164C00B25F12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		61AC6CBE1F77ECFC00B25F12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"MAX_EXT_API_CONNECTIONS=255",
-					"$(inherited)",
-					"NON_MATLAB_PARSING=1",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		61AC6CBF1F77ECFC00B25F12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		61AC6CD91F7A2F3300B25F12 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-					"NON_MATLAB_PARSING=1",
-					"MAX_EXT_API_CONNECTIONS=255",
-				);
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		61AC6CDA1F7A2F3300B25F12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				HEADER_SEARCH_PATHS = (
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		615EF9741F7CCEB100FD584C /* Build configuration list for PBXNativeTarget "FrequencePropre" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				615EF9721F7CCEB100FD584C /* Debug */,
-				615EF9731F7CCEB100FD584C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		615EF9821F7E086A00FD584C /* Build configuration list for PBXNativeTarget "Graphical" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1144,47 +683,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		617EEFF11FB597B100676D6E /* Build configuration list for PBXNativeTarget "Waving" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				617EEFF21FB597B100676D6E /* Debug */,
-				617EEFF31FB597B100676D6E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		61AC6C811F75164C00B25F12 /* Build configuration list for PBXProject "Handshaking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				61AC6C8B1F75164C00B25F12 /* Debug */,
 				61AC6C8C1F75164C00B25F12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		61AC6C8D1F75164C00B25F12 /* Build configuration list for PBXNativeTarget "Handshaking" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				61AC6C8E1F75164C00B25F12 /* Debug */,
-				61AC6C8F1F75164C00B25F12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		61AC6CBD1F77ECFC00B25F12 /* Build configuration list for PBXNativeTarget "Handshaking2" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				61AC6CBE1F77ECFC00B25F12 /* Debug */,
-				61AC6CBF1F77ECFC00B25F12 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		61AC6CD81F7A2F3300B25F12 /* Build configuration list for PBXNativeTarget "Handshaking2b" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				61AC6CD91F7A2F3300B25F12 /* Debug */,
-				61AC6CDA1F7A2F3300B25F12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

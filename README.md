@@ -16,11 +16,13 @@ COMPILING
 
 First, make sure that all the required dependencies (see above) are installed.
 
-For Mac, you can use the .xcodefile and simply run it or follow these Ubuntu instructions:
+For Mac, you can use the .xcodefile. However, you will have to change the V-REP Header search path in Build Settings and the vrep files in the Build Phases.
+
+You can also use cmake and follow these instructions which are the same for Ubuntu:
 
     cd wherever_the_code_is/build
 
-    cmake ..
+    cmake -D VREP_PATH=/your/vrep/path/ ..
 
     make
     
