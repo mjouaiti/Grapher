@@ -1,0 +1,84 @@
+\hypertarget{class_p_i_d_controller}{}\section{P\+I\+D\+Controller Class Reference}
+\label{class_p_i_d_controller}\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_p_i_d_controller_a67cc314aa5b3b4e9c47ac414b3a4c008}{P\+I\+D\+Controller} ()
+\item 
+\hyperlink{class_p_i_d_controller_a7fd60db88e0caadc06a48d20e36e5dd8}{P\+I\+D\+Controller} (const double kp, const double ki, const double kd, const double dt=0.\+01)
+\item 
+\hyperlink{class_p_i_d_controller_a690e7ad4796e5c5143aa4b90f2f6677b}{$\sim$\+P\+I\+D\+Controller} ()
+\item 
+double \hyperlink{class_p_i_d_controller_ae3515f2ab850696fc025801c4e502f26}{update} (const double current\+Pos, const double target\+Vel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\subsubsection[{\texorpdfstring{P\+I\+D\+Controller()}{PIDController()}}]{\setlength{\rightskip}{0pt plus 5cm}P\+I\+D\+Controller\+::\+P\+I\+D\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_p_i_d_controller_a67cc314aa5b3b4e9c47ac414b3a4c008}{}\label{class_p_i_d_controller_a67cc314aa5b3b4e9c47ac414b3a4c008}
+P\+ID Controller Constructor \begin{DoxySeeAlso}{See also}
+\hyperlink{class_p_i_d_controller_a7fd60db88e0caadc06a48d20e36e5dd8}{P\+I\+D\+Controller(const double kp, const double ki, const double kd, const double dt)} 
+\end{DoxySeeAlso}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\subsubsection[{\texorpdfstring{P\+I\+D\+Controller(const double kp, const double ki, const double kd, const double dt=0.\+01)}{PIDController(const double kp, const double ki, const double kd, const double dt=0.01)}}]{\setlength{\rightskip}{0pt plus 5cm}P\+I\+D\+Controller\+::\+P\+I\+D\+Controller (
+\begin{DoxyParamCaption}
+\item[{const double}]{kp, }
+\item[{const double}]{ki, }
+\item[{const double}]{kd, }
+\item[{const double}]{dt = {\ttfamily 0.01}}
+\end{DoxyParamCaption}
+)}\hypertarget{class_p_i_d_controller_a7fd60db88e0caadc06a48d20e36e5dd8}{}\label{class_p_i_d_controller_a7fd60db88e0caadc06a48d20e36e5dd8}
+P\+ID Controller Constructor 
+\begin{DoxyParams}{Parameters}
+{\em kp} & P gain (double) \\
+\hline
+{\em ki} & I gain (double) \\
+\hline
+{\em kd} & D gain (double) \\
+\hline
+{\em dt} & timestep (double) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_p_i_d_controller_a67cc314aa5b3b4e9c47ac414b3a4c008}{P\+I\+D\+Controller()} 
+\end{DoxySeeAlso}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!````~P\+I\+D\+Controller@{$\sim$\+P\+I\+D\+Controller}}
+\index{````~P\+I\+D\+Controller@{$\sim$\+P\+I\+D\+Controller}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\subsubsection[{\texorpdfstring{$\sim$\+P\+I\+D\+Controller()}{~PIDController()}}]{\setlength{\rightskip}{0pt plus 5cm}P\+I\+D\+Controller\+::$\sim$\+P\+I\+D\+Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_p_i_d_controller_a690e7ad4796e5c5143aa4b90f2f6677b}{}\label{class_p_i_d_controller_a690e7ad4796e5c5143aa4b90f2f6677b}
+P\+ID Controller Destructor 
+
+\subsection{Member Function Documentation}
+\index{P\+I\+D\+Controller@{P\+I\+D\+Controller}!update@{update}}
+\index{update@{update}!P\+I\+D\+Controller@{P\+I\+D\+Controller}}
+\subsubsection[{\texorpdfstring{update(const double current\+Pos, const double target\+Vel)}{update(const double currentPos, const double targetVel)}}]{\setlength{\rightskip}{0pt plus 5cm}double P\+I\+D\+Controller\+::update (
+\begin{DoxyParamCaption}
+\item[{const double}]{current\+Pos, }
+\item[{const double}]{target\+Vel}
+\end{DoxyParamCaption}
+)}\hypertarget{class_p_i_d_controller_ae3515f2ab850696fc025801c4e502f26}{}\label{class_p_i_d_controller_ae3515f2ab850696fc025801c4e502f26}
+updates the controller. Here we transform velocity control into position control to use the traditional P\+ID formulaes. 
+\begin{DoxyParams}{Parameters}
+{\em current\+Pos} & current joint angular position (double) \\
+\hline
+{\em target\+Vel} & target velocity (double) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+velocity to be applied to the joint (double) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+I\+D\+Controller.\+h\item 
+P\+I\+D\+Controller.\+cpp\end{DoxyCompactItemize}

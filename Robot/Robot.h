@@ -1,9 +1,23 @@
 //
 //  Robot.h
-//  Graphical
+//
+//  Code_Frontiers
+//  Copyright (C) 2018  Université de Lorraine - CNRS
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //  Created by Melanie Jouaiti on 09/11/2017.
-//  Copyright © 2017 Melanie Jouaiti. All rights reserved.
 //
 
 #ifndef Robot_h
@@ -45,12 +59,7 @@ class Robot
     virtual bool updateAngularPosition(const std::string jointName = "") = 0;
     virtual bool updateAngularVelocity(const std::string jointName = "") = 0;
     virtual bool updateAngularForce(const std::string jointName = "") = 0;
-    
-    void startClock();
-    void updateClock();
-    double getMicroseconds();
-    double getSeconds();
-    
+
     protected:
     
     std::vector<std::string> m_jointNames;          /**< list of the robot joint names */

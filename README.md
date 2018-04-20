@@ -4,13 +4,13 @@ This code has been tested on Mac OSX and Ubuntu. We do NOT support Windows. If y
 
 REQUIRED DEPENDENCIES:
    
-    OpenGL
+    OpenGL https://www.opengl.org
    
-    GLFW
+    GLFW http://www.glfw.org
    
-    GLEW (Linux ONLY)
+    GLEW (Linux ONLY) http://glew.sourceforge.net
    
-    V-REP
+    V-REP http://www.coppeliarobotics.com
 
 COMPILING
 

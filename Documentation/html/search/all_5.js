@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['updateangularforce',['updateAngularForce',['../class_robot___v_r_e_p.html#ab67bc62a8a02e2bbfbd69c0be383fc89',1,'Robot_VREP']]],
-  ['updateangularposition',['updateAngularPosition',['../class_robot___v_r_e_p.html#ad916176d052133d8f87688ca308d94f9',1,'Robot_VREP']]],
-  ['updateangularvelocity',['updateAngularVelocity',['../class_robot___v_r_e_p.html#a066997889ab5b2ef9ffddd93a8bf9531',1,'Robot_VREP']]],
-  ['updateclock',['updateClock',['../class_robot___v_r_e_p.html#a2e2cb43ed09c90d80a30b6bd8dccb8dd',1,'Robot_VREP']]]
+  ['pidcontroller',['PIDController',['../class_p_i_d_controller.html',1,'PIDController'],['../class_p_i_d_controller.html#a67cc314aa5b3b4e9c47ac414b3a4c008',1,'PIDController::PIDController()'],['../class_p_i_d_controller.html#a7fd60db88e0caadc06a48d20e36e5dd8',1,'PIDController::PIDController(const double kp, const double ki, const double kd, const double dt=0.01)']]]
 ];

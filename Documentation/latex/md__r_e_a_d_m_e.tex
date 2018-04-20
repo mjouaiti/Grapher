@@ -1,1 +1,31 @@
-I\+M\+P\+O\+R\+T\+A\+NT\+: The project is correctly set up in the X\+Code project but if for some reason you can\textquotesingle{}t use X\+Code (like not having a Mac...), you will need to follow these instructions (until I write the appropriate makefile...)\+: To compile the C++ files, you need to add the preprocessor macros\+: N\+O\+N\+\_\+\+M\+A\+T\+L\+A\+B\+\_\+\+P\+A\+R\+S\+I\+NG=1 and M\+A\+X\+\_\+\+E\+X\+T\+\_\+\+A\+P\+I\+\_\+\+C\+O\+N\+N\+E\+C\+T\+I\+O\+NS=255; You also need to compile ext\+Api.\+c and ext\+Api\+Platform. 
+I\+M\+P\+O\+R\+T\+A\+NT\+:
+
+This code has been tested on Mac O\+SX and Ubuntu. We do N\+OT support Windows. If you endeavour to run it on Windows, you\textquotesingle{}re on your own.
+
+R\+E\+Q\+U\+I\+R\+ED D\+E\+P\+E\+N\+D\+E\+N\+C\+I\+ES\+: \begin{DoxyVerb}OpenGL https://www.opengl.org
+
+GLFW http://www.glfw.org
+
+GLEW (Linux ONLY) http://glew.sourceforge.net
+
+V-REP http://www.coppeliarobotics.com
+\end{DoxyVerb}
+
+
+C\+O\+M\+P\+I\+L\+I\+NG
+
+First, make sure that all the required dependencies (see above) are installed.
+
+For Mac, you can use the .xcodefile and simply run it or follow these Ubuntu instructions\+: \begin{DoxyVerb}cd wherever_the_code_is/build
+
+cmake ..
+
+make
+\end{DoxyVerb}
+
+
+R\+U\+N\+N\+I\+NG \begin{DoxyVerb}./Graphical
+\end{DoxyVerb}
+
+
+Before running ./\+Graphical, open the V\+R\+EP file mico.\+ttt in the V-\/\+R\+EP file. 

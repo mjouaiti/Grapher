@@ -1,9 +1,23 @@
 //
 //  PIDController.cpp
-//  Handshaking
+//
+//  Code_Frontiers
+//  Copyright (C) 2018  Université de Lorraine - CNRS
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //  Created by Melanie Jouaiti on 08/10/2017.
-//  Copyright © 2017 Melanie Jouaiti. All rights reserved.
 //
 
 #include "PIDController.h"
@@ -62,10 +76,10 @@ double PIDController::update(const double currentPos, const double targetVel)
         m_targetPos = currentPos;
     }
     
-    m_targetPos += targetVel * m_dt;
+    m_targetPos += targetVel * 5 * m_dt;
     float errorValue = m_targetPos - currentPos;
     float ctrl = errorValue * m_kp;
-    if(m_ki!=0)
+    if(m_ki != 0)
         m_pidCumulativeErrorForIntegralParam = m_pidCumulativeErrorForIntegralParam + errorValue * m_dt;
     else
         m_pidCumulativeErrorForIntegralParam = 0;

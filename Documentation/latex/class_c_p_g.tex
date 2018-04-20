@@ -1,0 +1,156 @@
+\hypertarget{class_c_p_g}{}\section{C\+PG Class Reference}
+\label{class_c_p_g}\index{C\+PG@{C\+PG}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_p_g_a6f5ef8787aca645583e73f4c47cc020a}{C\+PG} ()
+\item 
+\hyperlink{class_c_p_g_acf66e3055d577a6bb75e457c1abf9f74}{C\+PG} (const double $\ast$params, std\+::vector$<$ double $>$ var)
+\item 
+\hyperlink{class_c_p_g_aa2cac8504168c1b0190ecc4760ef0cbe}{$\sim$\+C\+PG} ()
+\item 
+void \hyperlink{class_c_p_g_aeadfff1afc669e80840114ee7e1b5ee2}{set\+Input} (const double f)
+\item 
+double \hyperlink{class_c_p_g_a0069ed10226ce69f40166e93c349989f}{step} (const double vmes, const double t, const double dt)
+\item 
+void \hyperlink{class_c_p_g_a745ccc60b1cd67a3dd18f69b3a050b9b}{init} ()
+\item 
+void \hyperlink{class_c_p_g_a4f04f9438ac4ea0329f2eb6de096a888}{finalise} ()
+\item 
+\hyperlink{class_c_p_g}{C\+PG} \& \hyperlink{class_c_p_g_ab09de4940c722faf81a4ac1be9aea9a9}{operator=} (const \hyperlink{class_c_p_g}{C\+PG} \&cpg)
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_c_p_g_a1e15a331038f18632d0457dc8e954071}{get\+Data} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_c_p_g_a890eb7bc697eb15fbd9cd16229dd2a98}{couple\+C\+PG} (\hyperlink{class_c_p_g}{C\+PG} $\ast$cpg1, \hyperlink{class_c_p_g}{C\+PG} $\ast$cpg2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{C\+PG@{C\+PG}!C\+PG@{C\+PG}}
+\index{C\+PG@{C\+PG}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{C\+P\+G()}{CPG()}}]{\setlength{\rightskip}{0pt plus 5cm}C\+P\+G\+::\+C\+PG (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_a6f5ef8787aca645583e73f4c47cc020a}{}\label{class_c_p_g_a6f5ef8787aca645583e73f4c47cc020a}
+\hyperlink{class_c_p_g}{C\+PG} constructor \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_p_g_acf66e3055d577a6bb75e457c1abf9f74}{C\+P\+G(const double$\ast$ params, std\+::vector$<$double$>$ var)} 
+\end{DoxySeeAlso}
+\index{C\+PG@{C\+PG}!C\+PG@{C\+PG}}
+\index{C\+PG@{C\+PG}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{C\+P\+G(const double $\ast$params, std\+::vector$<$ double $>$ var)}{CPG(const double *params, std::vector< double > var)}}]{\setlength{\rightskip}{0pt plus 5cm}C\+P\+G\+::\+C\+PG (
+\begin{DoxyParamCaption}
+\item[{const double $\ast$}]{params, }
+\item[{std\+::vector$<$ double $>$}]{var}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_acf66e3055d577a6bb75e457c1abf9f74}{}\label{class_c_p_g_acf66e3055d577a6bb75e457c1abf9f74}
+\hyperlink{class_c_p_g}{C\+PG} constructor \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_p_g_a6f5ef8787aca645583e73f4c47cc020a}{C\+P\+G()} 
+\end{DoxySeeAlso}
+\index{C\+PG@{C\+PG}!````~C\+PG@{$\sim$\+C\+PG}}
+\index{````~C\+PG@{$\sim$\+C\+PG}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{$\sim$\+C\+P\+G()}{~CPG()}}]{\setlength{\rightskip}{0pt plus 5cm}C\+P\+G\+::$\sim$\+C\+PG (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_aa2cac8504168c1b0190ecc4760ef0cbe}{}\label{class_c_p_g_aa2cac8504168c1b0190ecc4760ef0cbe}
+\hyperlink{class_c_p_g}{C\+PG} destructor 
+
+\subsection{Member Function Documentation}
+\index{C\+PG@{C\+PG}!finalise@{finalise}}
+\index{finalise@{finalise}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{finalise()}{finalise()}}]{\setlength{\rightskip}{0pt plus 5cm}void C\+P\+G\+::finalise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_a4f04f9438ac4ea0329f2eb6de096a888}{}\label{class_c_p_g_a4f04f9438ac4ea0329f2eb6de096a888}
+finalisation function, to be called after init \begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_p_g_acf66e3055d577a6bb75e457c1abf9f74}{C\+P\+G(const double$\ast$ params, std\+::vector$<$double$>$ var)} 
+\end{DoxySeeAlso}
+\index{C\+PG@{C\+PG}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{get\+Data()}{getData()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ double $>$ C\+P\+G\+::get\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_a1e15a331038f18632d0457dc8e954071}{}\label{class_c_p_g_a1e15a331038f18632d0457dc8e954071}
+data getter function \begin{DoxyReturn}{Returns}
+a vector 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_p_g_a0069ed10226ce69f40166e93c349989f}{step(const double vmes, const double t, const double dt)} 
+\end{DoxySeeAlso}
+\index{C\+PG@{C\+PG}!init@{init}}
+\index{init@{init}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}void C\+P\+G\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_a745ccc60b1cd67a3dd18f69b3a050b9b}{}\label{class_c_p_g_a745ccc60b1cd67a3dd18f69b3a050b9b}
+\hyperlink{class_c_p_g}{C\+PG} initialisation function \begin{DoxySeeAlso}{See also}
+finalize() 
+\end{DoxySeeAlso}
+\index{C\+PG@{C\+PG}!operator=@{operator=}}
+\index{operator=@{operator=}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{operator=(const C\+P\+G \&cpg)}{operator=(const CPG \&cpg)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+PG}\& C\+P\+G\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+PG} \&}]{cpg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_c_p_g_ab09de4940c722faf81a4ac1be9aea9a9}{}\label{class_c_p_g_ab09de4940c722faf81a4ac1be9aea9a9}
+\hyperlink{class_c_p_g}{C\+PG} equal operator \index{C\+PG@{C\+PG}!set\+Input@{set\+Input}}
+\index{set\+Input@{set\+Input}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{set\+Input(const double f)}{setInput(const double f)}}]{\setlength{\rightskip}{0pt plus 5cm}void C\+P\+G\+::set\+Input (
+\begin{DoxyParamCaption}
+\item[{const double}]{f}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_aeadfff1afc669e80840114ee7e1b5ee2}{}\label{class_c_p_g_aeadfff1afc669e80840114ee7e1b5ee2}
+sets the G\+PS input 
+\begin{DoxyParams}{Parameters}
+{\em f} & input force \\
+\hline
+\end{DoxyParams}
+\index{C\+PG@{C\+PG}!step@{step}}
+\index{step@{step}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{step(const double vmes, const double t, const double dt)}{step(const double vmes, const double t, const double dt)}}]{\setlength{\rightskip}{0pt plus 5cm}double C\+P\+G\+::step (
+\begin{DoxyParamCaption}
+\item[{const double}]{vmes, }
+\item[{const double}]{t, }
+\item[{const double}]{dt}
+\end{DoxyParamCaption}
+)}\hypertarget{class_c_p_g_a0069ed10226ce69f40166e93c349989f}{}\label{class_c_p_g_a0069ed10226ce69f40166e93c349989f}
+step function 
+\begin{DoxyParams}{Parameters}
+{\em vmes} & current joint velocity \\
+\hline
+{\em t} & current time \\
+\hline
+{\em dt} & timestep \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{C\+PG@{C\+PG}!couple\+C\+PG@{couple\+C\+PG}}
+\index{couple\+C\+PG@{couple\+C\+PG}!C\+PG@{C\+PG}}
+\subsubsection[{\texorpdfstring{couple\+C\+PG}{coupleCPG}}]{\setlength{\rightskip}{0pt plus 5cm}void couple\+C\+PG (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+PG} $\ast$}]{cpg1, }
+\item[{{\bf C\+PG} $\ast$}]{cpg2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{class_c_p_g_a890eb7bc697eb15fbd9cd16229dd2a98}{}\label{class_c_p_g_a890eb7bc697eb15fbd9cd16229dd2a98}
+\hyperlink{class_c_p_g}{C\+PG} coupling function 
+\begin{DoxyParams}{Parameters}
+{\em cpg1} & first \hyperlink{class_c_p_g}{C\+PG} \\
+\hline
+{\em cpg2} & secong \hyperlink{class_c_p_g}{C\+PG} \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+P\+G.\+h\item 
+C\+P\+G.\+cpp\end{DoxyCompactItemize}

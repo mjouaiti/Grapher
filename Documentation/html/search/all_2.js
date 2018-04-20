@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lockjoint',['lockJoint',['../class_robot___v_r_e_p.html#a3dbd26e95f1a7b9ef06065b1a00acd9f',1,'Robot_VREP']]]
+  ['getdata',['getData',['../class_c_p_g.html#a1e15a331038f18632d0457dc8e954071',1,'CPG']]]
 ];

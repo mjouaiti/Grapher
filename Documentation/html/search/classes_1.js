@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simulation',['Simulation',['../class_simulation.html',1,'']]]
+  ['pidcontroller',['PIDController',['../class_p_i_d_controller.html',1,'']]]
 ];

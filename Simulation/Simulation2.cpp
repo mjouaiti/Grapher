@@ -1,9 +1,23 @@
 //
 //  Simulation2.cpp
-//  Handshaking
+//
+//  Code_Frontiers
+//  Copyright (C) 2018  Université de Lorraine - CNRS
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //  Created by Melanie Jouaiti on 07/10/2017.
-//  Copyright © 2017 Melanie Jouaiti. All rights reserved.
 //
 
 #include "Simulation2.h"
@@ -26,16 +40,14 @@ Simulation2::Simulation2(): Simulation()
 Simulation2::Simulation2(std::vector<std::string> jointNames): Simulation(jointNames)
 {
     m_startForce = new float[2];
-#ifdef VREP
     m_robot = new Robot_VREP(m_clientID, jointNames);
     m_PIDControllers.push_back(PIDController(PID_P, PID_I, PID_D));
     m_PIDControllers.push_back(PIDController(PID_P, PID_I, PID_D));
-#endif
     
     std::vector<double> variables{0.0, -0.216, 10.0, 0.0, -0.216, 10.0,
-        0.05, 0.05, 0.01, 0.01};
-    std::vector<double> variables2{0.0, -0.216, 10.0, 0.0, -0.216, 10.0,
         0.05, 0.05, 0.02, 0.02};
+    std::vector<double> variables2{0.0, -0.216, 10.0, 0.0, -0.216, 10.0,
+        0.05, 0.05, 0.03, 0.03};
     
     double param[] = {0.35, 3.5, 1.0, 0.000, 0.00000};
     double param2[] = {0.35, 3.5, 1.0, 0.000, 0.00000};
@@ -61,9 +73,9 @@ Simulation2::~Simulation2()
 {
     simxSetObjectIntParameter(m_clientID, m_sphereHandle, sim_shapeintparam_static, 1, simx_opmode_blocking);
 #if defined(__linux__)
-    saveToFile("/home/melanie/Documents/log/");
+    saveToFile("");
 #else
-    saveToFile("/Users/Melanie/Downloads/log/TwoJoints/new/");
+    saveToFile("");
 #endif
 }
 
@@ -72,8 +84,8 @@ Simulation2::~Simulation2()
  */
 void Simulation2::init()
 {
-    m_startForce[0] = 1.24;
-    m_startForce[1] = 2.62;
+    m_startForce[0] = 0;
+    m_startForce[1] = 0;
 }
 
 /**
@@ -110,7 +122,7 @@ std::vector<double> Simulation2::step()
 //        p.second->setInput((m_t < TMAX - 10)?(m_robot->getAngularVelocity(p.first)): 0);
 //        p.second->setInput((m_t < TMAX - 10)?(m_robot->getAngularPosition(p.first) - m_startForce[i]): 0);
         float vmes = m_robot->getAngularVelocity(p.first);
-        speed[i] =  10.0 * p.second->step(vmes, m_t, m_dt);
+        speed[i] =  3.0 * p.second->step(vmes, m_t, m_dt);
         
         m_robot->setVelocity(p.first, m_PIDControllers[i].update(m_robot->getAngularPosition(p.first), speed[i]));
         

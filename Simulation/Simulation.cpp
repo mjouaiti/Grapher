@@ -1,9 +1,23 @@
 //
 //  Simulation.cpp
-//  Handshaking
+//
+//  Code_Frontiers
+//  Copyright (C) 2018  Université de Lorraine - CNRS
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 //  Created by Melanie Jouaiti on 30/09/2017.
-//  Copyright © 2017 Melanie Jouaiti. All rights reserved.
 //
 
 #include "Simulation.h"
@@ -38,13 +52,11 @@ Simulation::Simulation(std::vector<std::string> jointNames): m_robot(), m_t(0),
 Simulation::~Simulation()
 {
     // Stop V-REP Simulation and close the connection
-#ifdef VREP
     simxStopSimulation(m_clientID, simx_opmode_blocking);
     int pt;
     simxGetPingTime(m_clientID, &pt);
     simxFinish(m_clientID);
     std::cout << "Connection closed"  << std::endl;
-#endif
 }
 
 /**
@@ -52,7 +64,6 @@ Simulation::~Simulation()
  */
 void Simulation::start()
 {
-#ifdef VREP
     simxFinish(-1);
     m_clientID = simxStart((simxChar*)"127.0.0.1",19997,true,true,2000,5);
     if (m_clientID!=-1)
@@ -87,7 +98,6 @@ void Simulation::start()
         std::cerr << "Cannot Connect to remote API server";
         exit(0);
     }
-#endif
 }
 
 /**

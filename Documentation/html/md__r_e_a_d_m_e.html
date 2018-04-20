@@ -62,7 +62,24 @@ $(function() {
 <div class="title">README </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>IMPORTANT: The project is correctly set up in the XCode project but if for some reason you can't use XCode (like not having a Mac...), you will need to follow these instructions (until I write the appropriate makefile...): To compile the C++ files, you need to add the preprocessor macros: NON_MATLAB_PARSING=1 and MAX_EXT_API_CONNECTIONS=255; You also need to compile extApi.c and extApiPlatform. </p>
+<div class="textblock"><p>IMPORTANT:</p>
+<p>This code has been tested on Mac OSX and Ubuntu. We do NOT support Windows. If you endeavour to run it on Windows, you're on your own.</p>
+<p>REQUIRED DEPENDENCIES: </p><pre class="fragment">OpenGL https://www.opengl.org
+
+GLFW http://www.glfw.org
+
+GLEW (Linux ONLY) http://glew.sourceforge.net
+
+V-REP http://www.coppeliarobotics.com
+</pre><p>COMPILING</p>
+<p>First, make sure that all the required dependencies (see above) are installed.</p>
+<p>For Mac, you can use the .xcodefile and simply run it or follow these Ubuntu instructions: </p><pre class="fragment">cd wherever_the_code_is/build
+
+cmake ..
+
+make
+</pre><p>RUNNING </p><pre class="fragment">./Graphical
+</pre><p>Before running ./Graphical, open the VREP file mico.ttt in the V-REP file. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
