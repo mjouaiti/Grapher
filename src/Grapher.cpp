@@ -157,6 +157,11 @@ void Grapher::update(std::vector<double> data)
     updateBuffers();
 }
 
+void Grapher::setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var)
+{
+    m_displayVariables[screen] = var;
+}
+
 /**
  * Render to the first Viewport
  * @param shader Shader to be used (Shader)

@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		615EF9871F7E1DCC00FD584C /* Grapher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9851F7E1DCC00FD584C /* Grapher.cpp */; };
 		615EF9891F7E1F7100FD584C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF9881F7E1F7100FD584C /* Cocoa.framework */; };
 		615EF98B1F7E1F7D00FD584C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98A1F7E1F7D00FD584C /* OpenGL.framework */; };
 		615EF98D1F7E1F8D00FD584C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98C1F7E1F8D00FD584C /* CoreVideo.framework */; };
 		615EF98F1F7E1F9400FD584C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98E1F7E1F9400FD584C /* IOKit.framework */; };
-		615EF9921F7E211500FD584C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9901F7E211500FD584C /* Shader.cpp */; };
 		615EF9941F7E316F00FD584C /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF9931F7E316F00FD584C /* libglfw3.a */; };
 /* End PBXBuildFile section */
 
@@ -29,17 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6101067920A346940058673D /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 		615EF97E1F7E086A00FD584C /* Graphical */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphical; sourceTree = BUILT_PRODUCTS_DIR; };
-		615EF9851F7E1DCC00FD584C /* Grapher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grapher.cpp; sourceTree = "<group>"; };
-		615EF9861F7E1DCC00FD584C /* Grapher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grapher.h; sourceTree = "<group>"; };
 		615EF9881F7E1F7100FD584C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		615EF98A1F7E1F7D00FD584C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		615EF98C1F7E1F8D00FD584C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		615EF98E1F7E1F9400FD584C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		615EF9901F7E211500FD584C /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
-		615EF9911F7E211500FD584C /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		615EF9931F7E316F00FD584C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
-		615EF9991F7E366C00FD584C /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
 		617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
 		6191E49A1F84C7CE00E53FFE /* v_repConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = v_repConst.h; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include/v_repConst.h"; sourceTree = "<group>"; };
 		61AC6C921F75168D00B25F12 /* remoteApi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = remoteApi.dylib; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApiBindings/lib/lib/remoteApi.dylib"; sourceTree = "<group>"; };
@@ -206,25 +200,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		615EF97F1F7E086A00FD584C /* Graphical */ = {
-			isa = PBXGroup;
-			children = (
-				615EF9911F7E211500FD584C /* Shader.h */,
-				615EF9901F7E211500FD584C /* Shader.cpp */,
-				615EF9861F7E1DCC00FD584C /* Grapher.h */,
-				615EF9851F7E1DCC00FD584C /* Grapher.cpp */,
-				615EF9991F7E366C00FD584C /* shaders */,
-			);
-			path = Graphical;
-			sourceTree = "<group>";
-		};
 		61AC6C7D1F75164C00B25F12 = {
 			isa = PBXGroup;
 			children = (
 				61AC6C951F7649EE00B25F12 /* extApi.c */,
 				6191E49A1F84C7CE00E53FFE /* v_repConst.h */,
 				61AC6C961F7649EE00B25F12 /* extApiPlatform.c */,
-				615EF97F1F7E086A00FD584C /* Graphical */,
+				6101067920A346940058673D /* src */,
 				61AC6C871F75164C00B25F12 /* Products */,
 				61AC6C911F75168D00B25F12 /* Frameworks */,
 			);
@@ -452,8 +434,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				615EF9921F7E211500FD584C /* Shader.cpp in Sources */,
-				615EF9871F7E1DCC00FD584C /* Grapher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,6 +44,7 @@ public:
     void render1(const Shader& shader) const;
     void render2(const Shader& shader) const;
     void render3(const Shader& shader) const;
+    void setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var);
     
     
 private:
