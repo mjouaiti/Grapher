@@ -21,9 +21,7 @@
 //
 
 #include "Grapher.h"
-#include "../Simulation/Simulation2.h"
 
-#define TMAX 130
 #define OVERVIEW
 
 /**
@@ -40,9 +38,9 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_record(), m_values(),
  * @param nbVariables number of variables that will be recorded (unsigned int)
  * @see Grapher()
  */
-Grapher::Grapher(const unsigned int nbVariables): m_t(0), m_dt(0.01),
-                                                m_record(), m_values(),
-                                                m_VAO(), m_VBO(), m_nbVariables(nbVariables)
+Grapher::Grapher(const double tMax, const unsigned int nbVariables):    m_t(0), m_dt(0.01), m_tMax(tMax),
+                                                                        m_record(), m_values(),
+                                                                        m_VAO(), m_VBO(), m_nbVariables(nbVariables)
 {
     m_VAO = std::vector<GLuint>(m_nbVariables, -1);
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
@@ -123,7 +121,7 @@ void Grapher::update(std::vector<double> data)
         else
             scale[i] = m_maxValues[i];
 #ifdef OVERVIEW
-        m_values[i].push_back(glm::vec2(2.0 * data[0] / TMAX - 1.0, data[i] / m_maxValues[i]));
+        m_values[i].push_back(glm::vec2(2.0 * data[0] / m_tMax - 1.0, data[i] / m_maxValues[i]));
 #else
         m_values[i].push_back(glm::vec2(data[0]-1, data[i] / m_maxValues[i]));
         if(m_t > 1.51)
@@ -168,32 +166,20 @@ void Grapher::update(std::vector<double> data)
  */
 void Grapher::render0(const Shader& shader) const
 {
-    if(m_nbVariables < 1)
+    if(m_nbVariables < 1 || m_displayVariables[0].size() < 1)
         return;
     shader.use();
-    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
-    glBindVertexArray(m_VAO[_sigma_s2E]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_sigma_s2E].size());
-    
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 1);
-    glBindVertexArray(m_VAO[_sigma_s2F]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_sigma_s2F].size());
-    
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 2);
-    glBindVertexArray(m_VAO[_sigma_s3E]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_sigma_s3E].size());
-    glBindVertexArray(0);
-    
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 3);
-    glBindVertexArray(m_VAO[_sigma_s3F]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_sigma_s3F].size());
-    glBindVertexArray(0);
+    int c = 0;
+    for(auto var: m_displayVariables[0])
+    {
+        // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
+        glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
+        glBindVertexArray(m_VAO[var]);
+        // This function is broken on Mac so don't even bother playing with it. Works with Linux though
+        glPointSize(5);
+        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glBindVertexArray(0);
+    }
 }
 
 /**
@@ -205,32 +191,20 @@ void Grapher::render0(const Shader& shader) const
  */
 void Grapher::render1(const Shader& shader) const
 {
-    if(m_nbVariables < 1)
+    if(m_nbVariables < 1 || m_displayVariables[1].size() < 1)
         return;
     shader.use();
-    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
-    glBindVertexArray(m_VAO[_Af_2E]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Af_2E].size());
-
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 1);
-    glBindVertexArray(m_VAO[_Af_2F]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Af_2F].size());
-
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 2);
-    glBindVertexArray(m_VAO[_Af_3E]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Af_3E].size());
-    glBindVertexArray(0);
-
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 3);
-    glBindVertexArray(m_VAO[_Af_3F]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_Af_3F].size());
-    glBindVertexArray(0);
+    int c = 0;
+    for(auto var: m_displayVariables[1])
+    {
+        // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
+        glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
+        glBindVertexArray(m_VAO[var]);
+        // This function is broken on Mac so don't even bother playing with it. Works with Linux though
+        glPointSize(5);
+        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glBindVertexArray(0);
+    }
 }
 
 /**
@@ -242,23 +216,20 @@ void Grapher::render1(const Shader& shader) const
  */
 void Grapher::render2(const Shader& shader) const
 {
-    if(m_nbVariables < 1)
+    if(m_nbVariables < 1 || m_displayVariables[2].size() < 1)
         return;
     shader.use();
-    
-    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
-    glBindVertexArray(m_VAO[_s2]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_s2].size());
-    glBindVertexArray(0);
-    
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 2);
-    glBindVertexArray(m_VAO[_F2]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_F2].size());
-    glBindVertexArray(0);
+    int c = 0;
+    for(auto var: m_displayVariables[2])
+    {
+        // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
+        glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
+        glBindVertexArray(m_VAO[var]);
+        // This function is broken on Mac so don't even bother playing with it. Works with Linux though
+        glPointSize(5);
+        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glBindVertexArray(0);
+    }
 }
 
 /**
@@ -270,21 +241,18 @@ void Grapher::render2(const Shader& shader) const
  */
 void Grapher::render3(const Shader& shader) const
 {
-    if(m_nbVariables < 1)
+    if(m_nbVariables < 1 || m_displayVariables[3].size() < 1)
         return;
     shader.use();
-    
-    // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 0);
-    glBindVertexArray(m_VAO[_s3]);
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_s3].size());
-    glBindVertexArray(0);
-    
-    glUniform1i(glGetUniformLocation(shader.m_program, "c"), 1);
-    glBindVertexArray(m_VAO[_F3]);
-    // This function is broken on Mac so don't even bother playing with it. Works with Linux though
-    glPointSize(5);
-    glDrawArrays(GL_LINES, 0, m_values[_F3].size());
-    glBindVertexArray(0);
+    int c = 0;
+    for(auto var: m_displayVariables[3])
+    {
+        // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
+        glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
+        glBindVertexArray(m_VAO[var]);
+        // This function is broken on Mac so don't even bother playing with it. Works with Linux though
+        glPointSize(5);
+        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glBindVertexArray(0);
+    }
 }

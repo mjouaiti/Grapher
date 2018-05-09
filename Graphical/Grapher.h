@@ -37,7 +37,7 @@ class Grapher
 {
 public:
     Grapher();
-    Grapher(const unsigned int nbVariables);
+    Grapher(const double tMax = 130, const unsigned int nbVariables = 0);
     ~Grapher();
     void update(std::vector<double> data);
     void render0(const Shader& shader) const;
@@ -52,12 +52,14 @@ private:
     
     float m_t;                                              /**< current time in seconds */
     float m_dt;                                             /**< time step */
+    double m_tMax;                                          /**< maximum time */
     std::vector<float> m_record;                            /**< recorded values */
     unsigned int m_nbVariables;                             /**< number of variables to be recorded */
     std::vector<GLuint> m_VAO;                              /**< vector of VAOs */
     std::vector<GLuint> m_VBO;                              /**< vector of VBOs */
     std::vector<std::vector<glm::vec2> > m_values;          /**< values in a rendering format */
     std::vector<double> m_maxValues;                        /**< maximum values */
+    std::vector<std::vector<unsigned int>> m_displayVariables;               /**< variables to be displayed */
 };
 
 #endif /* Grapher_h */

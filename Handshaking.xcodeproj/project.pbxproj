@@ -14,22 +14,6 @@
 		615EF98F1F7E1F9400FD584C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98E1F7E1F9400FD584C /* IOKit.framework */; };
 		615EF9921F7E211500FD584C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9901F7E211500FD584C /* Shader.cpp */; };
 		615EF9941F7E316F00FD584C /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF9931F7E316F00FD584C /* libglfw3.a */; };
-		615EF9971F7E346400FD584C /* extApi.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C951F7649EE00B25F12 /* extApi.c */; };
-		615EF9981F7E346700FD584C /* extApiPlatform.c in Sources */ = {isa = PBXBuildFile; fileRef = 61AC6C961F7649EE00B25F12 /* extApiPlatform.c */; };
-		615EF99C1F7E633400FD584C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9801F7E086A00FD584C /* main.cpp */; };
-		617EEFE11FB4C13300676D6E /* Robot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFDF1FB4C13300676D6E /* Robot.cpp */; };
-		617EEFE41FB4C15D00676D6E /* Robot_VREP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE31FB4C15D00676D6E /* Robot_VREP.cpp */; };
-		617EEFE81FB4C5D300676D6E /* Simulation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 617EEFE71FB4C5D300676D6E /* Simulation.cpp */; };
-		617EEFF61FB5A81900676D6E /* Integrator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615EF9781F7E053B00FD584C /* Integrator.cpp */; };
-		6191E4BD1F8A50BF00E53FFE /* PIDController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6191E4B91F8A50BF00E53FFE /* PIDController.cpp */; };
-		61A8C70A1F98C0DF009ED261 /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61A8C7081F98C0DF009ED261 /* common.cpp */; };
-		61BBDE8B1FDEC49A00B7244B /* Simulation2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 619DCED11F9E3B4800AEFB2F /* Simulation2.cpp */; };
-		61CD0CA52010DD980045BD27 /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */; };
-		61CD0CA62010DD980045BD27 /* libopencv_highgui.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */; };
-		61CD0CA72010DD980045BD27 /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */; };
-		61CD0CAA2010DD990045BD27 /* libopencv_objdetect.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CD0CA82010DD980045BD27 /* libopencv_objdetect.3.3.0.dylib */; };
-		61CD0CAB2010DD990045BD27 /* libopencv_videoio.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 61CD0CA92010DD990045BD27 /* libopencv_videoio.3.3.0.dylib */; };
-		61D302E31FEF9697007E2FB2 /* CPG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 61D302E11FEF9697007E2FB2 /* CPG.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,9 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		615EF9781F7E053B00FD584C /* Integrator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Integrator.cpp; path = "lib-cpg/Integrator.cpp"; sourceTree = "<group>"; };
 		615EF97E1F7E086A00FD584C /* Graphical */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphical; sourceTree = BUILT_PRODUCTS_DIR; };
-		615EF9801F7E086A00FD584C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		615EF9851F7E1DCC00FD584C /* Grapher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Grapher.cpp; sourceTree = "<group>"; };
 		615EF9861F7E1DCC00FD584C /* Grapher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grapher.h; sourceTree = "<group>"; };
 		615EF9881F7E1F7100FD584C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -58,20 +40,8 @@
 		615EF9911F7E211500FD584C /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
 		615EF9931F7E316F00FD584C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		615EF9991F7E366C00FD584C /* shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shaders; sourceTree = "<group>"; };
-		617EEFDF1FB4C13300676D6E /* Robot.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Robot.cpp; path = Robot/Robot.cpp; sourceTree = "<group>"; };
-		617EEFE01FB4C13300676D6E /* Robot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Robot.h; path = Robot/Robot.h; sourceTree = "<group>"; };
-		617EEFE21FB4C15D00676D6E /* Robot_VREP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Robot_VREP.h; path = Robot/Robot_VREP.h; sourceTree = "<group>"; };
-		617EEFE31FB4C15D00676D6E /* Robot_VREP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Robot_VREP.cpp; path = Robot/Robot_VREP.cpp; sourceTree = "<group>"; };
-		617EEFE51FB4C5BB00676D6E /* Simulation2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simulation2.h; path = Simulation/Simulation2.h; sourceTree = "<group>"; };
-		617EEFE61FB4C5D200676D6E /* Simulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Simulation.h; path = Simulation/Simulation.h; sourceTree = "<group>"; };
-		617EEFE71FB4C5D300676D6E /* Simulation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Simulation.cpp; path = Simulation/Simulation.cpp; sourceTree = "<group>"; };
 		617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
 		6191E49A1F84C7CE00E53FFE /* v_repConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = v_repConst.h; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include/v_repConst.h"; sourceTree = "<group>"; };
-		6191E4B81F88B9F500E53FFE /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		6191E4B91F8A50BF00E53FFE /* PIDController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PIDController.cpp; sourceTree = "<group>"; };
-		6191E4BA1F8A50BF00E53FFE /* PIDController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIDController.h; sourceTree = "<group>"; };
-		619DCED11F9E3B4800AEFB2F /* Simulation2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Simulation2.cpp; path = Simulation/Simulation2.cpp; sourceTree = "<group>"; };
-		61A8C7081F98C0DF009ED261 /* common.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
 		61AC6C921F75168D00B25F12 /* remoteApi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = remoteApi.dylib; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApiBindings/lib/lib/remoteApi.dylib"; sourceTree = "<group>"; };
 		61AC6C951F7649EE00B25F12 /* extApi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApi.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApi.c"; sourceTree = "<absolute>"; };
 		61AC6C961F7649EE00B25F12 /* extApiPlatform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApiPlatform.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApiPlatform.c"; sourceTree = "<absolute>"; };
@@ -218,9 +188,6 @@
 		61BBDFC41FE955AF00B7244B /* libopencv_contrib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_contrib.dylib; path = "../../../../naoqi-sdk-2.1.4.13-mac64/lib/libopencv_contrib.dylib"; sourceTree = "<group>"; };
 		61CD0CA82010DD980045BD27 /* libopencv_objdetect.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_objdetect.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_objdetect.3.3.0.dylib; sourceTree = "<group>"; };
 		61CD0CA92010DD990045BD27 /* libopencv_videoio.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videoio.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_videoio.3.3.0.dylib; sourceTree = "<group>"; };
-		61D302E11FEF9697007E2FB2 /* CPG.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CPG.cpp; sourceTree = "<group>"; };
-		61D302E21FEF9697007E2FB2 /* CPG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPG.h; sourceTree = "<group>"; };
-		61D302E51FEFB93D007E2FB2 /* Integrator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Integrator.h; path = "lib-cpg/Integrator.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,11 +195,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61CD0CAA2010DD990045BD27 /* libopencv_objdetect.3.3.0.dylib in Frameworks */,
-				61CD0CAB2010DD990045BD27 /* libopencv_videoio.3.3.0.dylib in Frameworks */,
-				61CD0CA52010DD980045BD27 /* libopencv_core.3.3.0.dylib in Frameworks */,
-				61CD0CA62010DD980045BD27 /* libopencv_highgui.3.3.0.dylib in Frameworks */,
-				61CD0CA72010DD980045BD27 /* libopencv_imgproc.3.3.0.dylib in Frameworks */,
 				615EF9941F7E316F00FD584C /* libglfw3.a in Frameworks */,
 				615EF98F1F7E1F9400FD584C /* IOKit.framework in Frameworks */,
 				615EF98D1F7E1F8D00FD584C /* CoreVideo.framework in Frameworks */,
@@ -247,7 +209,6 @@
 		615EF97F1F7E086A00FD584C /* Graphical */ = {
 			isa = PBXGroup;
 			children = (
-				615EF9801F7E086A00FD584C /* main.cpp */,
 				615EF9911F7E211500FD584C /* Shader.h */,
 				615EF9901F7E211500FD584C /* Shader.cpp */,
 				615EF9861F7E1DCC00FD584C /* Grapher.h */,
@@ -260,22 +221,6 @@
 		61AC6C7D1F75164C00B25F12 = {
 			isa = PBXGroup;
 			children = (
-				61D302E21FEF9697007E2FB2 /* CPG.h */,
-				61D302E11FEF9697007E2FB2 /* CPG.cpp */,
-				6191E4B81F88B9F500E53FFE /* common.h */,
-				61A8C7081F98C0DF009ED261 /* common.cpp */,
-				61D302E51FEFB93D007E2FB2 /* Integrator.h */,
-				615EF9781F7E053B00FD584C /* Integrator.cpp */,
-				617EEFE01FB4C13300676D6E /* Robot.h */,
-				617EEFDF1FB4C13300676D6E /* Robot.cpp */,
-				617EEFE31FB4C15D00676D6E /* Robot_VREP.cpp */,
-				617EEFE21FB4C15D00676D6E /* Robot_VREP.h */,
-				6191E4BA1F8A50BF00E53FFE /* PIDController.h */,
-				6191E4B91F8A50BF00E53FFE /* PIDController.cpp */,
-				617EEFE61FB4C5D200676D6E /* Simulation.h */,
-				617EEFE71FB4C5D300676D6E /* Simulation.cpp */,
-				617EEFE51FB4C5BB00676D6E /* Simulation2.h */,
-				619DCED11F9E3B4800AEFB2F /* Simulation2.cpp */,
 				61AC6C951F7649EE00B25F12 /* extApi.c */,
 				6191E49A1F84C7CE00E53FFE /* v_repConst.h */,
 				61AC6C961F7649EE00B25F12 /* extApiPlatform.c */,
@@ -507,19 +452,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				617EEFE41FB4C15D00676D6E /* Robot_VREP.cpp in Sources */,
-				617EEFF61FB5A81900676D6E /* Integrator.cpp in Sources */,
-				615EF99C1F7E633400FD584C /* main.cpp in Sources */,
-				617EEFE11FB4C13300676D6E /* Robot.cpp in Sources */,
-				617EEFE81FB4C5D300676D6E /* Simulation.cpp in Sources */,
 				615EF9921F7E211500FD584C /* Shader.cpp in Sources */,
 				615EF9871F7E1DCC00FD584C /* Grapher.cpp in Sources */,
-				61A8C70A1F98C0DF009ED261 /* common.cpp in Sources */,
-				615EF9971F7E346400FD584C /* extApi.c in Sources */,
-				61D302E31FEF9697007E2FB2 /* CPG.cpp in Sources */,
-				6191E4BD1F8A50BF00E53FFE /* PIDController.cpp in Sources */,
-				61BBDE8B1FDEC49A00B7244B /* Simulation2.cpp in Sources */,
-				615EF9981F7E346700FD584C /* extApiPlatform.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
