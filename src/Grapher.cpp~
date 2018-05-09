@@ -46,7 +46,7 @@ Grapher::Grapher(const double tMax, const unsigned int nbVariables):    m_t(0), 
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
     m_values.resize(m_nbVariables);
     m_maxValues = std::vector<double>(m_nbVariables, 0.01);
-    m_displayVariables = std::vector<std::vector<unsigned int>>(4);
+    m_displayVariables = std::vector<std::vector<unsigned int>>(4, {});
     bindBuffers();
 }
 
