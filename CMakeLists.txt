@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS -std=c++11)
 INCLUDE(FindOpenGL)
 find_package(Threads REQUIRED)
 
-set(GRAPHICAL_SOURCES Graphical/Shader.cpp Graphical/Grapher.cpp)
+set(GRAPHICAL_SOURCES src/Shader.cpp src/Grapher.cpp)
 
 ADD_LIBRARY(Grapher STATIC ${GRAPHICAL_SOURCES})
 add_definitions(-pthread)
