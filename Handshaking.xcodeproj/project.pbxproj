@@ -35,10 +35,7 @@
 		615EF98E1F7E1F9400FD584C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		615EF9931F7E316F00FD584C /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		617EEFF41FB59A6F00676D6E /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
-		6191E49A1F84C7CE00E53FFE /* v_repConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = v_repConst.h; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include/v_repConst.h"; sourceTree = "<group>"; };
 		61AC6C921F75168D00B25F12 /* remoteApi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = remoteApi.dylib; path = "../../../../../../Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApiBindings/lib/lib/remoteApi.dylib"; sourceTree = "<group>"; };
-		61AC6C951F7649EE00B25F12 /* extApi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApi.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApi.c"; sourceTree = "<absolute>"; };
-		61AC6C961F7649EE00B25F12 /* extApiPlatform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = extApiPlatform.c; path = "/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi/extApiPlatform.c"; sourceTree = "<absolute>"; };
 		61BBDE941FE9264200B7244B /* libopencv_imgproc.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_imgproc.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE951FE9264200B7244B /* libopencv_highgui.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.3.0.dylib; path = ../../../../../../usr/local/Cellar/opencv/3.3.0_3/lib/libopencv_highgui.3.3.0.dylib; sourceTree = "<group>"; };
 		61BBDE981FE926D700B7244B /* libqi.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libqi.dylib; path = "../../../../naoqi-sdk-2.1.4.13-mac64/lib/libqi.dylib"; sourceTree = "<group>"; };
@@ -203,9 +200,6 @@
 		61AC6C7D1F75164C00B25F12 = {
 			isa = PBXGroup;
 			children = (
-				61AC6C951F7649EE00B25F12 /* extApi.c */,
-				6191E49A1F84C7CE00E53FFE /* v_repConst.h */,
-				61AC6C961F7649EE00B25F12 /* extApiPlatform.c */,
 				6101067920A346940058673D /* src */,
 				61AC6C871F75164C00B25F12 /* Products */,
 				61AC6C911F75168D00B25F12 /* Frameworks */,

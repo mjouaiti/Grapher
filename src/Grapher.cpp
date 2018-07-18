@@ -28,7 +28,8 @@
  * Grapher Constructor
  * @see Grapher(const unsigned int nbVariables)
  */
-Grapher::Grapher(): m_t(0), m_dt(0.01), m_record(), m_values(),
+Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
+                    m_adaptiveTime(false), m_record(), m_values(),
                     m_VAO(), m_VBO(), m_nbVariables(-1)
 {
 }
@@ -38,10 +39,16 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_record(), m_values(),
  * @param nbVariables number of variables that will be recorded (unsigned int)
  * @see Grapher()
  */
-Grapher::Grapher(const double tMax, const unsigned int nbVariables):    m_t(0), m_dt(0.01), m_tMax(tMax),
-                                                                        m_record(), m_values(),
-                                                                        m_VAO(), m_VBO(), m_nbVariables(nbVariables)
+Grapher::Grapher(const double tMax, const unsigned int nbVariables): m_t(0), m_dt(0.01), m_tMax(tMax),
+                                                                     m_adaptiveTime(false), m_record(), m_values(),
+                                                                     m_VAO(), m_VBO(), m_nbVariables(0)
 {
+    if (m_tMax != -1)
+    {
+        m_adaptiveTime = true;
+        m_tMax = 20;
+    }
+    
     m_VAO = std::vector<GLuint>(m_nbVariables, -1);
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
     m_values.resize(m_nbVariables);
@@ -102,7 +109,6 @@ void Grapher::update(std::vector<double> data)
 {
     if(data.size() != m_nbVariables)
     {
-        std::cerr << "Warning:: Sent " << data.size() << " values but should have received: " << m_nbVariables << std::endl;
         m_nbVariables = (int)data.size();
         m_VAO = std::vector<GLuint>(m_nbVariables, -1);
         m_VBO = std::vector<GLuint>(m_nbVariables, -1);
@@ -121,33 +127,37 @@ void Grapher::update(std::vector<double> data)
         }
         else
             scale[i] = m_maxValues[i];
-#ifdef OVERVIEW
-        m_values[i].push_back(glm::vec2(2.0 * data[0] / m_tMax - 1.0, data[i] / m_maxValues[i]));
-#else
-        m_values[i].push_back(glm::vec2(data[0]-1, data[i] / m_maxValues[i]));
-        if(m_t > 1.51)
-            m_values[i].back().x -= (m_t - 1.5 - m_dt);
-#endif
+        
+        if(!m_adaptiveTime)
+            m_values[i].push_back(glm::vec2(2.0 * data[0] / m_tMax - 1.0, data[i] / m_maxValues[i]));
+        else
+        {
+            m_values[i].push_back(glm::vec2(data[0]-1, data[i] / m_maxValues[i]));
+            if(m_t > 1.51)
+                m_values[i].back().x -= (m_t - 1.5 - m_dt);
+        }
+
         if(m_t > 0)
             m_values[i].push_back(m_values[i].back());
         // Each value (except for the first) is stored twice so that we can render lines. This is not necessary if you only wish to render points.
         m_record.push_back(data[i]);
     }
     // Once the curve fills the three quarters of the screen, it moves to the left with time so that it keeps beeing displayed online.
-#ifndef OVERVIEW
-    if(m_t > 1.5)
+    if(!m_adaptiveTime)
     {
-        for(unsigned int i = 1; i < m_nbVariables; i++)
+        if(m_t > 1.5)
         {
-            // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
-            if(m_values[i].size() > 400)
-                m_values[i].erase(m_values[i].begin(), m_values[i].begin() + 100);
-            // All values are moved one step to the left. This is the moving motion.
-            for(unsigned int v = m_values[i].size(); v > 0; v--)
-                m_values[i][v] -= glm::vec2(m_dt, 0);
+            for(unsigned int i = 1; i < m_nbVariables; i++)
+            {
+                // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
+                if(m_values[i].size() > m_t / m_dt)
+                    m_values[i].erase(m_values[i].begin(), m_values[i].begin() + int(1.5 / m_dt));
+                // All values are moved one step to the left. This is the moving motion.
+                for(unsigned int v = m_values[i].size(); v > 0; v--)
+                    m_values[i][v] -= glm::vec2(m_dt, 0);
+            }
         }
     }
-#endif
     for(unsigned int i: indices)
     {
         for(unsigned int j = 0; j < m_values[i].size(); j++)
