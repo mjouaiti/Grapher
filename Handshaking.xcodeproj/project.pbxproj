@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6113578B20FF72AA00985E94 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6113578820FF72AA00985E94 /* Shader.cpp */; };
+		6113578C20FF72AA00985E94 /* Grapher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6113578920FF72AA00985E94 /* Grapher.cpp */; };
+		6113578D20FF72AA00985E94 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6113578A20FF72AA00985E94 /* main.cpp */; };
+		6113578F20FF75E600985E94 /* libnanogui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6113578E20FF75E600985E94 /* libnanogui.dylib */; };
 		615EF9891F7E1F7100FD584C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF9881F7E1F7100FD584C /* Cocoa.framework */; };
 		615EF98B1F7E1F7D00FD584C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98A1F7E1F7D00FD584C /* OpenGL.framework */; };
 		615EF98D1F7E1F8D00FD584C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 615EF98C1F7E1F8D00FD584C /* CoreVideo.framework */; };
@@ -28,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		6101067920A346940058673D /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
+		6113578820FF72AA00985E94 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = src/Shader.cpp; sourceTree = "<group>"; };
+		6113578920FF72AA00985E94 /* Grapher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Grapher.cpp; path = src/Grapher.cpp; sourceTree = "<group>"; };
+		6113578A20FF72AA00985E94 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		6113578E20FF75E600985E94 /* libnanogui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libnanogui.dylib; path = ../nanogui/build/libnanogui.dylib; sourceTree = "<group>"; };
 		615EF97E1F7E086A00FD584C /* Graphical */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Graphical; sourceTree = BUILT_PRODUCTS_DIR; };
 		615EF9881F7E1F7100FD584C /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		615EF98A1F7E1F7D00FD584C /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -186,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6113578F20FF75E600985E94 /* libnanogui.dylib in Frameworks */,
 				615EF9941F7E316F00FD584C /* libglfw3.a in Frameworks */,
 				615EF98F1F7E1F9400FD584C /* IOKit.framework in Frameworks */,
 				615EF98D1F7E1F8D00FD584C /* CoreVideo.framework in Frameworks */,
@@ -200,6 +209,9 @@
 		61AC6C7D1F75164C00B25F12 = {
 			isa = PBXGroup;
 			children = (
+				6113578920FF72AA00985E94 /* Grapher.cpp */,
+				6113578A20FF72AA00985E94 /* main.cpp */,
+				6113578820FF72AA00985E94 /* Shader.cpp */,
 				6101067920A346940058673D /* src */,
 				61AC6C871F75164C00B25F12 /* Products */,
 				61AC6C911F75168D00B25F12 /* Frameworks */,
@@ -217,6 +229,7 @@
 		61AC6C911F75168D00B25F12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6113578E20FF75E600985E94 /* libnanogui.dylib */,
 				61CD0CA82010DD980045BD27 /* libopencv_objdetect.3.3.0.dylib */,
 				61CD0CA92010DD990045BD27 /* libopencv_videoio.3.3.0.dylib */,
 				61BBDFC41FE955AF00B7244B /* libopencv_contrib.dylib */,
@@ -428,6 +441,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6113578B20FF72AA00985E94 /* Shader.cpp in Sources */,
+				6113578C20FF72AA00985E94 /* Grapher.cpp in Sources */,
+				6113578D20FF72AA00985E94 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,14 +461,13 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
+					"/Users/Melanie/Documents/Studies/LORIA/Code/nanogui/ext/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/X11/lib,
 					/usr/lib,
 					/usr/local/lib,
-					/usr/local/Cellar/opencv/3.3.0_3/lib,
+					/Users/Melanie/Documents/Studies/LORIA/Code/nanogui/build,
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -464,14 +479,13 @@
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/remoteApi",
-					"/Applications/V-REP_PRO_EDU_V3_4_0_Mac/programming/include",
+					"/Users/Melanie/Documents/Studies/LORIA/Code/nanogui/ext/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/X11/lib,
 					/usr/lib,
 					/usr/local/lib,
-					/usr/local/Cellar/opencv/3.3.0_3/lib,
+					/Users/Melanie/Documents/Studies/LORIA/Code/nanogui/build,
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

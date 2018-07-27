@@ -40,6 +40,7 @@ using namespace std;
 class Shader
 {
 public:
+    Shader();
     Shader(const GLchar* vertexSourcePath, const GLchar* fragmentSourcePath);
     void use() const;
     ~Shader();

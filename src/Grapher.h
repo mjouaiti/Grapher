@@ -23,6 +23,13 @@
 #ifndef Grapher_h
 #define Grapher_h
 
+#if defined(_LINUX)
+#   include <GL/glew.h>
+#endif
+
+#define GLFW_INCLUDE_GLCOREARB
+#include <GLFW/glfw3.h>
+
 #include <iostream>
 #include <vector>
 #include "Shader.h"
@@ -37,7 +44,8 @@ class Grapher
 {
 public:
     Grapher();
-    Grapher(const double tMax = -1, const unsigned int nbVariables = 0);
+    Grapher(const unsigned int width, const unsigned int height,
+            const double tMax = -1, const unsigned int nbVariables = 0);
     ~Grapher();
     void update(std::vector<double> data);
     void render0(const Shader& shader) const;
@@ -45,11 +53,17 @@ public:
     void render2(const Shader& shader) const;
     void render3(const Shader& shader) const;
     void setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var);
+    void step(std::vector<double> values);
+    bool shouldClose() const;
     
     
 private:
     void bindBuffers();
     void updateBuffers();
+    
+    int V_WIDTH, V_HEIGHT;
+    GLFWwindow* _Window;
+    Shader m_shader;
     
     float m_t;                                                          /**< current time in seconds */
     float m_dt;                                                         /**< time step */
@@ -63,5 +77,8 @@ private:
     std::vector<double> m_maxValues;                                    /**< maximum values */
     std::vector<std::vector<unsigned int>> m_displayVariables;          /**< variables to be displayed */
 };
+
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 #endif /* Grapher_h */

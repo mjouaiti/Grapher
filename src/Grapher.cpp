@@ -39,10 +39,62 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
  * @param nbVariables number of variables that will be recorded (unsigned int)
  * @see Grapher()
  */
-Grapher::Grapher(const double tMax, const unsigned int nbVariables): m_t(0), m_dt(0.01), m_tMax(tMax),
+Grapher::Grapher(const unsigned int width, const unsigned int height,
+                 const double tMax, const unsigned int nbVariables): m_t(0), m_dt(0.01), m_tMax(tMax),
                                                                      m_adaptiveTime(false), m_record(), m_values(),
                                                                      m_VAO(), m_VBO(), m_nbVariables(0)
 {
+    if (!glfwInit())
+    {
+        printf("glfwInit() fail to initialize. \n");
+        glfwTerminate();
+        exit(-1);
+    }
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    
+    _Window = glfwCreateWindow(width, height, "Grapher", 0, 0);
+    
+    
+    if (!_Window)
+    {
+        printf("Display window fail to create. \n");
+        glfwTerminate();
+        exit(-1);
+    }
+    
+    glfwMakeContextCurrent(_Window);
+    
+#ifdef _LINUX
+    glewExperimental = GL_TRUE;
+    glewInit();
+#endif
+    
+    glfwSetKeyCallback(_Window, key_callback);
+    
+#ifdef _LINUX
+    glViewport(0, 0, width, height);
+#else
+    glViewport(0, 0, width * 2, height * 2);
+#endif
+    
+    std::cout << glGetString(GL_VERSION) << std::endl;
+    
+#ifdef _LINUX
+    std::string path = "../../Grapher/src/";
+    GLint V_WIDTH = WIDTH / 2, V_HEIGHT = HEIGHT / 2;
+#else
+    std::string logPath = "";
+    std::string path = "/Users/Melanie/Documents/Studies/LORIA/Code/Grapher/src/";
+    GLint V_WIDTH = width, V_HEIGHT = height;
+#endif
+    //Create Shader
+    m_shader = Shader((path + "shaders/shader.vs").c_str(), (path + "shaders/shader.frag").c_str());
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    
     if (m_tMax != -1)
     {
         m_adaptiveTime = true;
@@ -66,6 +118,14 @@ Grapher::~Grapher()
     {
         glDeleteVertexArrays(1, &m_VAO[i]);
         glDeleteBuffers(1, &m_VBO[i]);
+    }
+    
+    glfwTerminate();
+    
+    GLenum errGL;
+    while ((errGL = glGetError()) != GL_NO_ERROR)
+    {
+        cerr << "OpenGL error: " << errGL << endl;
     }
 }
 
@@ -173,6 +233,29 @@ void Grapher::setDisplayedVariables(const unsigned int screen, std::vector<unsig
     m_displayVariables[screen] = var;
 }
 
+void Grapher::step(std::vector<double> values)
+{
+    glfwPollEvents();
+    
+    update(values);
+    
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    glViewport(0, 0, V_WIDTH, V_HEIGHT);
+    render0(m_shader);
+    
+    glViewport(0, V_HEIGHT, V_WIDTH, V_HEIGHT);
+    render1(m_shader);
+    
+    glViewport(V_WIDTH, V_HEIGHT, V_WIDTH, V_HEIGHT);
+    render2(m_shader);
+    
+    glViewport(V_WIDTH, 0, V_WIDTH, V_HEIGHT);
+    render3(m_shader);
+    
+    glfwSwapBuffers(_Window);
+}
+
 /**
  * Render to the first Viewport
  * @param shader Shader to be used (Shader)
@@ -270,5 +353,20 @@ void Grapher::render3(const Shader& shader) const
         glPointSize(5);
         glDrawArrays(GL_LINES, 0, m_values[var].size());
         glBindVertexArray(0);
+    }
+}
+
+bool Grapher::shouldClose() const
+{
+    return glfwWindowShouldClose(_Window);
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    if(key == GLFW_KEY_Q && action == GLFW_PRESS)
+    {
+        
     }
 }

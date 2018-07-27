@@ -22,6 +22,11 @@
 
 #include "Shader.h"
 
+Shader::Shader()
+{
+    
+}
+
 /**
  * Shader Constructor
  * @param vertexSourcePath path of the vertexShader (GLchar*)
