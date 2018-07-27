@@ -20,12 +20,6 @@
 //  Created by Melanie Jouaiti on 29/09/2017.
 //
 
-#ifdef __APPLE__
-#   define _OSX
-#elif defined(__linux__)
-#   define _LINUX
-#endif
-
 #ifndef Grapher_h
 #define Grapher_h
 
