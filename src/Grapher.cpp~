@@ -20,6 +20,11 @@
 //  Created by Melanie Jouaiti on 29/09/2017.
 //
 
+#ifdef __APPLE__
+#   define _OSX
+#elif defined(__linux__)
+#   define _LINUX
+#endif
 #include "Grapher.h"
 
 #define OVERVIEW
@@ -30,7 +35,7 @@
  */
 Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
                     m_adaptiveTime(false), m_record(), m_values(),
-                    m_VAO(), m_VBO(), m_nbVariables(-1)
+                    m_VAO(), m_VBO(), m_nbVariables(0)
 {
 }
 
@@ -42,7 +47,7 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
 Grapher::Grapher(const unsigned int width, const unsigned int height,
                  const double tMax, const unsigned int nbVariables): m_t(0), m_dt(0.01), m_tMax(tMax),
                                                                      m_adaptiveTime(false), m_record(), m_values(),
-                                                                     m_VAO(), m_VBO(), m_nbVariables(0)
+                                                                     m_VAO(), m_VBO(), m_nbVariables(nbVariables)
 {
     if (!glfwInit())
     {
@@ -84,19 +89,15 @@ Grapher::Grapher(const unsigned int width, const unsigned int height,
     std::cout << glGetString(GL_VERSION) << std::endl;
     
 #ifdef _LINUX
-    std::string path = "../../Grapher/src/";
-    GLint V_WIDTH = width / 2, V_HEIGHT = height / 2;
+    V_WIDTH = width / 2; V_HEIGHT = height / 2;
 #else
-    std::string logPath = "";
-    std::string path = "/Users/Melanie/Documents/Studies/LORIA/Code/Grapher/src/";
-    GLint V_WIDTH = width, V_HEIGHT = height;
+    V_WIDTH = width; V_HEIGHT = height;
 #endif
-    //Create Shader
-    m_shader = Shader((path + "shaders/shader.vs").c_str(), (path + "shaders/shader.frag").c_str());
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     
-    if (m_tMax != -1)
+    if (m_tMax == -1)
     {
+	std::cout << "WARNING::No Time limit Set" << std::endl;
         m_adaptiveTime = true;
         m_tMax = 20;
     }
@@ -104,7 +105,7 @@ Grapher::Grapher(const unsigned int width, const unsigned int height,
     m_VAO = std::vector<GLuint>(m_nbVariables, -1);
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
     m_values.resize(m_nbVariables);
-    m_maxValues = std::vector<double>(m_nbVariables, 0.01);
+    m_maxValues = std::vector<double>(m_nbVariables, 0.001);
     m_displayVariables = std::vector<std::vector<unsigned int>>(4);
     bindBuffers();
 }
@@ -169,6 +170,7 @@ void Grapher::update(std::vector<double> data)
 {
     if(data.size() != m_nbVariables)
     {
+	std::cout << "WARNING:: Updating variable number to " << (int)data.size() << std::endl;
         m_nbVariables = (int)data.size();
         m_VAO = std::vector<GLuint>(m_nbVariables, -1);
         m_VBO = std::vector<GLuint>(m_nbVariables, -1);
@@ -203,7 +205,7 @@ void Grapher::update(std::vector<double> data)
         m_record.push_back(data[i]);
     }
     // Once the curve fills the three quarters of the screen, it moves to the left with time so that it keeps beeing displayed online.
-    if(!m_adaptiveTime)
+    if(m_adaptiveTime)
     {
         if(m_t > 1.5)
         {
@@ -233,25 +235,24 @@ void Grapher::setDisplayedVariables(const unsigned int screen, std::vector<unsig
     m_displayVariables[screen] = var;
 }
 
-void Grapher::step(std::vector<double> values)
+void Grapher::step(std::vector<double> values, const Shader& shader)
 {
     glfwPollEvents();
+    glClear(GL_COLOR_BUFFER_BIT);
     
     update(values);
     
-    glClear(GL_COLOR_BUFFER_BIT);
-    
     glViewport(0, 0, V_WIDTH, V_HEIGHT);
-    render0(m_shader);
+    render0(shader);
     
     glViewport(0, V_HEIGHT, V_WIDTH, V_HEIGHT);
-    render1(m_shader);
+    render1(shader);
     
     glViewport(V_WIDTH, V_HEIGHT, V_WIDTH, V_HEIGHT);
-    render2(m_shader);
+    render2(shader);
     
     glViewport(V_WIDTH, 0, V_WIDTH, V_HEIGHT);
-    render3(m_shader);
+    render3(shader);
     
     glfwSwapBuffers(_Window);
 }
@@ -269,7 +270,7 @@ void Grapher::render0(const Shader& shader) const
         return;
     shader.use();
     int c = 0;
-    for(auto var: m_displayVariables[0])
+    for(int var: m_displayVariables[0])
     {
         // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
         glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
@@ -294,7 +295,7 @@ void Grapher::render1(const Shader& shader) const
         return;
     shader.use();
     int c = 0;
-    for(auto var: m_displayVariables[1])
+    for(int var: m_displayVariables[1])
     {
         // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
         glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
@@ -319,7 +320,7 @@ void Grapher::render2(const Shader& shader) const
         return;
     shader.use();
     int c = 0;
-    for(auto var: m_displayVariables[2])
+    for(int var: m_displayVariables[2])
     {
         // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
         glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);
@@ -344,7 +345,7 @@ void Grapher::render3(const Shader& shader) const
         return;
     shader.use();
     int c = 0;
-    for(auto var: m_displayVariables[3])
+    for(int var: m_displayVariables[3])
     {
         // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
         glUniform1i(glGetUniformLocation(shader.m_program, "c"), c++);

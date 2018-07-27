@@ -59,17 +59,16 @@ public:
     void render2(const Shader& shader) const;
     void render3(const Shader& shader) const;
     void setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var);
-    void step(std::vector<double> values);
+    void step(std::vector<double> values, const Shader& shader);
     bool shouldClose() const;
     
+    
+    int V_WIDTH, V_HEIGHT;
+    GLFWwindow* _Window;
     
 private:
     void bindBuffers();
     void updateBuffers();
-    
-    int V_WIDTH, V_HEIGHT;
-    GLFWwindow* _Window;
-    Shader m_shader;
     
     float m_t;                                                          /**< current time in seconds */
     float m_dt;                                                         /**< time step */
