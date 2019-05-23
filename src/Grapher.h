@@ -51,7 +51,7 @@ class Grapher
 public:
     Grapher();
     Grapher(const unsigned int width, const unsigned int height,
-            const double tMax = -1, const unsigned int nbVariables = 0);
+            const double tMax = -1, const double dt = 0.05, const unsigned int nbVariables = 0);
     ~Grapher();
     void update(std::vector<double> data);
     void render0(const Shader& shader) const;
@@ -60,8 +60,10 @@ public:
     void render3(const Shader& shader) const;
     void setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var);
     void step(std::vector<double> values, const Shader& shader);
+    void renderToFramebuffer(const std::string& path, std::vector<double> values, const Shader& shader);
     bool shouldClose() const;
-    
+    void setBoundariesX(const double xMin, const double xMax);
+    void setBoundariesY(const double yMin, const double yMax);
     
     int V_WIDTH, V_HEIGHT;
     GLFWwindow* _Window;
@@ -74,13 +76,19 @@ private:
     float m_dt;                                                         /**< time step */
     double m_tMax;                                                      /**< maximum time */
     bool m_adaptiveTime;                                                /**< Should be enabled when the duration is unknown */
+    double m_boundariesX[2];
+    double m_boundariesY[2];
     std::vector<float> m_record;                                        /**< recorded values */
     unsigned int m_nbVariables;                                         /**< number of variables to be recorded */
     std::vector<GLuint> m_VAO;                                          /**< vector of VAOs */
     std::vector<GLuint> m_VBO;                                          /**< vector of VBOs */
+    GLuint m_FBO;
+    GLuint m_texture;
+    GLuint m_RBO;
     std::vector<std::vector<glm::vec2> > m_values;                      /**< values in a rendering format */
     std::vector<double> m_maxValues;                                    /**< maximum values */
     std::vector<std::vector<unsigned int>> m_displayVariables;          /**< variables to be displayed */
+    bool m_multipleDisplay;
 };
 
 

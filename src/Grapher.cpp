@@ -33,7 +33,7 @@
  * Grapher Constructor
  * @see Grapher(const unsigned int nbVariables)
  */
-Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
+Grapher::Grapher(): m_t(0), m_dt(0.05), m_tMax(-1),
                     m_adaptiveTime(false), m_record(), m_values(),
                     m_VAO(), m_VBO(), m_nbVariables(0)
 {
@@ -45,9 +45,11 @@ Grapher::Grapher(): m_t(0), m_dt(0.01), m_tMax(-1),
  * @see Grapher()
  */
 Grapher::Grapher(const unsigned int width, const unsigned int height,
-                 const double tMax, const unsigned int nbVariables): m_t(0), m_dt(0.01), m_tMax(tMax),
-                                                                     m_adaptiveTime(false), m_record(), m_values(),
-                                                                     m_VAO(), m_VBO(), m_nbVariables(nbVariables)
+                 const double tMax, const double dt, const unsigned int nbVariables): m_t(0), m_dt(dt), m_tMax(tMax),
+                                                                     m_adaptiveTime(false),
+                                                                     m_record(), m_values(),
+                                                                     m_VAO(), m_VBO(), m_nbVariables(nbVariables),
+                                                                     m_multipleDisplay(false)
 {
     if (!glfwInit())
     {
@@ -102,6 +104,10 @@ Grapher::Grapher(const unsigned int width, const unsigned int height,
         m_tMax = 20;
     }
     
+    m_boundariesX[0] = 0;
+    m_boundariesX[1] = tMax;
+    m_boundariesY[0] = -1;
+    m_boundariesY[1] = -1;
     m_VAO = std::vector<GLuint>(m_nbVariables, -1);
     m_VBO = std::vector<GLuint>(m_nbVariables, -1);
     m_values.resize(m_nbVariables);
@@ -120,6 +126,7 @@ Grapher::~Grapher()
         glDeleteVertexArrays(1, &m_VAO[i]);
         glDeleteBuffers(1, &m_VBO[i]);
     }
+    glDeleteFramebuffers(1, &m_FBO);
     
     glfwTerminate();
     
@@ -135,6 +142,43 @@ Grapher::~Grapher()
  */
 void Grapher::bindBuffers()
 {
+    glGenFramebuffers(1, &m_FBO);
+    glGenTextures(1, &m_texture);
+    glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
+    glBindTexture(GL_TEXTURE_2D, m_texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, V_WIDTH, V_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glBindTexture(GL_TEXTURE_2D, 0);
+    glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_texture, 0);
+    GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
+    glDrawBuffers(1, DrawBuffers);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    GLenum status = glCheckFramebufferStatus( GL_FRAMEBUFFER );
+    switch(status)
+    {
+        case GL_FRAMEBUFFER_COMPLETE:
+            std::cout << "FBO created" << std::endl;
+            break;
+        case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+            std::cout << "Incomplete attachment" << std::endl;
+            break;
+        case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+            std::cout << "Missing attachment" << std::endl;
+            break;
+        case GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER:
+            std::cout << "Incomplete draw buffer" << std::endl;
+            break;
+        case GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER:
+            std::cout << "Incomplete read buffer" << std::endl;
+            break;
+        case GL_FRAMEBUFFER_UNSUPPORTED:
+            std::cout << "Type is not Supported" << std::endl;
+            break;
+    }
+    
+    
     for(unsigned int i = 0; i < m_nbVariables; i++)
     {
         glGenVertexArrays(1, &m_VAO[i]);
@@ -191,12 +235,31 @@ void Grapher::update(std::vector<double> data)
             scale[i] = m_maxValues[i];
         
         if(!m_adaptiveTime)
-            m_values[i].push_back(glm::vec2(2.0 * data[0] / m_tMax - 1.0, data[i] / m_maxValues[i]));
+        {
+            if(m_boundariesY[0] == -1)
+                m_values[i].push_back(glm::vec2(2 * (data[0] - m_boundariesX[0]) / (m_boundariesX[1] - m_boundariesX[0]) - 1.0, data[i]/ m_maxValues[i]));
+            else
+                m_values[i].push_back(glm::vec2(2 * (data[0] - m_boundariesX[0]) / (m_boundariesX[1] - m_boundariesX[0]) - 1.0, 2 * (data[i] - m_boundariesY[0]) / (m_boundariesY[1] - m_boundariesY[0]) - 1.0));
+        }
         else
         {
-            m_values[i].push_back(glm::vec2(data[0]-1, data[i] / m_maxValues[i]));
-            if(m_t > 1.51)
-                m_values[i].back().x -= (m_t - 1.5 - m_dt);
+            if(m_boundariesY[0] == -1)
+                m_values[i].push_back(glm::vec2(data[0] - 1.0, data[i]/ m_maxValues[i]));
+            else if(m_t > m_boundariesX[1])
+            {
+                for(unsigned int i = 1; i < m_nbVariables; i++)
+                {
+                    // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
+                    m_values[i].erase(m_values[i].begin(), m_values[i].begin() + 1);
+                    // All values are moved one step to the left. This is the moving motion.
+                    for(unsigned long v = m_values[i].size(); v > 0; v--)
+                        m_values[i][v] -= glm::vec2(2 * m_dt / (m_boundariesX[1] - m_boundariesX[0]), 0);
+                }
+                m_values[i].push_back(glm::vec2(2 * (data[0] - m_boundariesX[0] - (m_t - m_boundariesX[1])) / (m_boundariesX[1] - m_boundariesX[0]) - 1.0, 2 * (data[i] - m_boundariesY[0]) / (m_boundariesY[1] - m_boundariesY[0]) - 1.0));
+            }
+            else
+                m_values[i].push_back(glm::vec2(2 * (data[0] - m_boundariesX[0]) / (m_boundariesX[1] - m_boundariesX[0]) - 1.0, 2 * (data[i] - m_boundariesY[0]) / (m_boundariesY[1] - m_boundariesY[0]) - 1.0));
+                //m_values[i].push_back(glm::vec2(data[0] - 1.0, 2 * (data[i] - m_boundariesY[0]) / (m_boundariesY[1] - m_boundariesY[0]) - 1.0));
         }
 
         if(m_t > 0)
@@ -205,25 +268,28 @@ void Grapher::update(std::vector<double> data)
         m_record.push_back(data[i]);
     }
     // Once the curve fills the three quarters of the screen, it moves to the left with time so that it keeps beeing displayed online.
-    if(m_adaptiveTime)
+//    if(m_adaptiveTime)
+//    {
+//        if(m_t > m_boundariesX[1])
+//        {
+//            for(unsigned int i = 1; i < m_nbVariables; i++)
+//            {
+//                // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
+//                //if(m_values[i].size() > 2 * m_boundariesX[1] / m_dt)
+//                    //m_values[i].erase(m_values[i].begin(), m_values[i].begin() + 1);
+//                // All values are moved one step to the left. This is the moving motion.
+//                for(unsigned long v = m_values[i].size(); v > 0; v--)
+//                    m_values[i][v] -= glm::vec2(m_dt, 0);
+//            }
+//        }
+//    }
+    if(m_boundariesY[0] == -1)
     {
-        if(m_t > 1.5)
+        for(unsigned int i: indices)
         {
-            for(unsigned int i = 1; i < m_nbVariables; i++)
-            {
-                // For space and efficiency's sake, the values are progressively erased so that only the ones displayed are stored.
-                if(m_values[i].size() > m_t / m_dt)
-                    m_values[i].erase(m_values[i].begin(), m_values[i].begin() + int(1.5 / m_dt));
-                // All values are moved one step to the left. This is the moving motion.
-                for(unsigned int v = m_values[i].size(); v > 0; v--)
-                    m_values[i][v] -= glm::vec2(m_dt, 0);
-            }
+            for(unsigned int j = 0; j < m_values[i].size(); j++)
+                m_values[i][j].y *= m_maxValues[i] / scale[i];
         }
-    }
-    for(unsigned int i: indices)
-    {
-        for(unsigned int j = 0; j < m_values[i].size(); j++)
-            m_values[i][j].y *= m_maxValues[i] / scale[i];
     }
     m_maxValues = scale;
     m_t += m_dt;
@@ -233,6 +299,31 @@ void Grapher::update(std::vector<double> data)
 void Grapher::setDisplayedVariables(const unsigned int screen, std::vector<unsigned int> var)
 {
     m_displayVariables[screen] = var;
+    if(screen > 0)
+        m_multipleDisplay = true;
+}
+
+void savePPM(std::string filename, unsigned char* pixels)
+{
+    std::ofstream out(filename.c_str(), std::ios::out);
+    if(!out)
+    {
+        std::cerr << "ERROR::CANNOT::OPEN::FILE" << std::endl;
+        exit(1);
+    }
+    
+    out << "P3\n";
+    out << 1024 << " " << 768 << std::endl;
+    out << 3 << std::endl;
+    int nbData = 0;
+    for(unsigned int y = 0; y < 1024 * 768 * 3; y++)
+    {
+        out << (int)pixels[y] << " ";
+        nbData++;
+        if(nbData % 21 == 0)
+                out << "\n";
+    }
+    out.close();
 }
 
 void Grapher::step(std::vector<double> values, const Shader& shader)
@@ -242,20 +333,67 @@ void Grapher::step(std::vector<double> values, const Shader& shader)
     
     update(values);
     
-    glViewport(0, 0, V_WIDTH, V_HEIGHT);
-    render0(shader);
-    
-    glViewport(0, V_HEIGHT, V_WIDTH, V_HEIGHT);
-    render1(shader);
-    
-    glViewport(V_WIDTH, V_HEIGHT, V_WIDTH, V_HEIGHT);
-    render2(shader);
-    
-    glViewport(V_WIDTH, 0, V_WIDTH, V_HEIGHT);
-    render3(shader);
+    if(m_multipleDisplay)
+    {
+        glViewport(0, 0, V_WIDTH, V_HEIGHT);
+        render0(shader);
+        
+        glViewport(0, V_HEIGHT, V_WIDTH, V_HEIGHT);
+        render1(shader);
+        
+        glViewport(V_WIDTH, V_HEIGHT, V_WIDTH, V_HEIGHT);
+        render2(shader);
+        
+        glViewport(V_WIDTH, 0, V_WIDTH, V_HEIGHT);
+        render3(shader);
+    }
+    else
+        render0(shader);
     
     glfwSwapBuffers(_Window);
 }
+
+int countF = 0;
+
+void Grapher::renderToFramebuffer(const std::string& path, std::vector<double> values, const Shader& shader)
+{
+    glfwPollEvents();
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, m_FBO);
+    glViewport(0, 0, V_WIDTH, V_HEIGHT);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    update(values);
+    
+    if(m_multipleDisplay)
+    {
+        glViewport(0, 0, V_WIDTH, V_HEIGHT);
+        render0(shader);
+        
+        glViewport(0, V_HEIGHT, V_WIDTH, V_HEIGHT);
+        render1(shader);
+        
+        glViewport(V_WIDTH, V_HEIGHT, V_WIDTH, V_HEIGHT);
+        render2(shader);
+        
+        glViewport(V_WIDTH, 0, V_WIDTH, V_HEIGHT);
+        render3(shader);
+    }
+    else
+        render0(shader);
+    
+    unsigned char* pixels = new unsigned char[V_WIDTH * V_HEIGHT * 3];
+    memset(pixels, 0, V_WIDTH * V_HEIGHT * 3);
+    glReadPixels(0, 0, V_WIDTH, V_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, pixels);
+    
+    savePPM(path + std::to_string(countF++) + ".ppm", pixels);
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    
+    //glfwSwapBuffers(_Window);
+}
+
 
 /**
  * Render to the first Viewport
@@ -269,7 +407,10 @@ void Grapher::render0(const Shader& shader) const
     if(m_nbVariables < 1 || m_displayVariables[0].size() < 1)
         return;
     shader.use();
-    int c = 0;
+    
+    int c = 1;
+//    if (m_values[1].size() > 55)
+//        c = 1;
     for(int var: m_displayVariables[0])
     {
         // Sets the curve color (0 is for blue, 1 is for red, 2 for green, 3 for purple)
@@ -277,7 +418,7 @@ void Grapher::render0(const Shader& shader) const
         glBindVertexArray(m_VAO[var]);
         // This function is broken on Mac so don't even bother playing with it. Works with Linux though
         glPointSize(5);
-        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glDrawArrays(GL_LINES, 0, int(m_values[var].size()));
         glBindVertexArray(0);
     }
 }
@@ -302,7 +443,7 @@ void Grapher::render1(const Shader& shader) const
         glBindVertexArray(m_VAO[var]);
         // This function is broken on Mac so don't even bother playing with it. Works with Linux though
         glPointSize(5);
-        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glDrawArrays(GL_LINES, 0, int(m_values[var].size()));
         glBindVertexArray(0);
     }
 }
@@ -327,7 +468,7 @@ void Grapher::render2(const Shader& shader) const
         glBindVertexArray(m_VAO[var]);
         // This function is broken on Mac so don't even bother playing with it. Works with Linux though
         glPointSize(5);
-        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glDrawArrays(GL_LINES, 0, int(m_values[var].size()));
         glBindVertexArray(0);
     }
 }
@@ -352,7 +493,7 @@ void Grapher::render3(const Shader& shader) const
         glBindVertexArray(m_VAO[var]);
         // This function is broken on Mac so don't even bother playing with it. Works with Linux though
         glPointSize(5);
-        glDrawArrays(GL_LINES, 0, m_values[var].size());
+        glDrawArrays(GL_LINES, 0, int(m_values[var].size()));
         glBindVertexArray(0);
     }
 }
@@ -370,4 +511,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     {
         
     }
+}
+
+
+void Grapher::setBoundariesX(const double xMin, const double xMax)
+{
+    m_boundariesX[0] = xMin;
+    m_boundariesX[1] = xMax;
+}
+
+void Grapher::setBoundariesY(const double yMin, const double yMax)
+{
+    m_boundariesY[0] = yMin;
+    m_boundariesY[1] = yMax;
 }
